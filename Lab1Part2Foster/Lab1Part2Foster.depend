@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1611787477 source:w:\egr226\labs\lab1\lab1part2foster\stats_lib.c
+	"stats_lib.h"
+	<math.h>
+
+1611787477 source:w:\egr226\labs\lab1\lab1part2foster\main.c
+	<stdio.h>
+	<stdlib.h>
+	"stats_lib.h"
+
+1611787477 w:\egr226\labs\lab1\lab1part2foster\stats_lib.h
+

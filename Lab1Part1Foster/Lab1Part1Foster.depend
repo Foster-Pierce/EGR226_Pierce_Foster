@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1611699408 source:w:\egr226\labs\lab1\lab1part1foster\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
+1611784846 source:w:\egr226\labs\lab1\lab1part1foster\part1main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+
