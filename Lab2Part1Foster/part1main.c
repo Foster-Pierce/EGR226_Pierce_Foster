@@ -12,6 +12,7 @@
 
 #define maxstring 1000
 #define strings 10
+#define colorcode 12
 
 void prompt(void);
 void calcResistorColors(int);
@@ -116,13 +117,94 @@ printf("Your output is: %s-%s-%s\n", arr[first],arr[second],arr[count]);
 }
 
 void getColorBands(char*,char*,char*,char*){
+char in1,in2,in3,in4;
 
-
+printf("Input Color Band 1 Character:\n");
+char*=scanf("%c", in1&);
+printf("Input Color Band 2 Character:\n");
+char*=scanf("%c", in2&);
+printf("Input Color Band 3 Character:\n");
+char*scanf("%c", in3&);
+printf("Input Color Band 4 Character:\n");
+char*scanf("%c", in4&);
 
 }
 
 
 
 void calcResistance(char,char,char,char){
+int count = 0, i, base =1, multiplier, first, second, third, count2, resistance;
+float tolerance;
+char arr[maxstring][colorcode] =
+{
+    'k',
+    'n',
+    'r',
+    'o',
+    'y',
+    'g',
+    'b',
+    'v',
+    'e',
+    'w',
+    'd',
+    's'
+};
+char multiply[maxstring][colorcode] =
+{
+    'k',
+    'n',
+    'r',
+    'o',
+    'y',
+    'g',
+    'b',
+    'v',
+    'e',
+    'w',
+    'd',
+    's'
+};
+char toleranced[maxstring][colorcode] =
+{
+    'k',
+    'n',
+    'r',
+    'o',
+    'y',
+    'g',
+    'b',
+    'v',
+    'e',
+    'w',
+    'd',
+    's'
+};
+//check if input char is equal to an array char then assign number by concantenating the first two, multiplying that by the multiplier, then adding %%
+for(i=0;i<12;i++){
+    if(in1 == arr[i]){
 
+    }
+}
+
+
+
+
+while (userResistance >= 100){
+userResistance= userResistance/10;
+count++;
+}
+
+if(count>0){
+for (i=0;i<count;i++)
+multiplier = base*10;
+}
+while(first >= 10){
+    first = first/10;
+}
+while(second >= 10){
+    second = (second/pow(10,count));
+    second = second %10;
+}
+printf("Your output is: %d +/- %d%\n", resistance, tolerance);
 }
