@@ -16,3 +16,8 @@
 
 1611868036 c:\users\pierce\documents\github\egr226_pierce_foster\lab1part2foster\stats_lib.h
 
+1611868036 source:c:\users\pierce\documents\github\egr226_pierce_foster\lab1part2foster\part2main.c
+	<stdio.h>
+	<stdlib.h>
+	"stats_lib.h"
+
