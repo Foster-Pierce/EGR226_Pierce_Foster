@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 #define maxstring 1000
 #define strings 10
@@ -21,14 +22,25 @@ void calcResistance(char,char,char,char);
 
 int main()
 {
-int userResistance, decision=1;
-
-
-//add prompt choice (1) or (2)
+int userResistance, decision=1,choice;
+char in1,in2,in3,in4;
 
 while (decision!=0){
         prompt();
 
+scanf("%d", &choice);
+if (choice==2){
+while ((getchar()) != '\n');
+getColorBands(&in1,&in2,&in3,&in4);
+printf("%c, %c, %c, %c\n", in1,in2,in3,in4);
+
+calcResistance(in1,in2,in3,in4);
+
+printf("to try again press '1' or '0' to quit: \n");
+scanf("%d",&decision);
+}
+else {
+printf("Please enter integer resistance number\n");
         // error checking for non integer
 if(scanf("%d", &userResistance) != 1) {
     printf("failure to read valid input, try again\n");
@@ -45,6 +57,7 @@ while (userResistance <0 || userResistance >99000000){
 calcResistorColors(userResistance);
 printf("to try again press '1' or '0' to quit: \n");
 scanf("%d",&decision);
+}
 }
 }
     return 0;
@@ -116,95 +129,180 @@ while(second >= 10){
 printf("Your output is: %s-%s-%s\n", arr[first],arr[second],arr[count]);
 }
 
-void getColorBands(char*,char*,char*,char*){
-char in1,in2,in3,in4;
+void getColorBands(char*in1,char*in2,char*in3,char*in4){
+char inp1,inp2,inp3,inp4;
+int exit=1;
+while (exit!=0){
 
 printf("Input Color Band 1 Character:\n");
-char*=scanf("%c", in1&);
+scanf("%c", &inp1);
+*in1 = inp1;
+while ((getchar()) != '\n');
 printf("Input Color Band 2 Character:\n");
-char*=scanf("%c", in2&);
+scanf("%c", &inp2);
+*in2 = inp2;
+while ((getchar()) != '\n');
 printf("Input Color Band 3 Character:\n");
-char*scanf("%c", in3&);
+scanf("%c", &inp3);
+*in3 = inp3;
+while ((getchar()) != '\n');
 printf("Input Color Band 4 Character:\n");
-char*scanf("%c", in4&);
-
+scanf("%c", &inp4);
+*in4 = inp4;
+while ((getchar()) != '\n');
+exit = 0;
+}
+return 0;
 }
 
 
 
-void calcResistance(char,char,char,char){
-int count = 0, i, base =1, multiplier, first, second, third, count2, resistance;
+void calcResistance(char in1,char in2,char in3,char in4){
+int count = 0, i, base =1, multiplier, first, second, third, count2, resistance, exit=0;
 float tolerance;
-char arr[maxstring][colorcode] =
-{
-    'k',
-    'n',
-    'r',
-    'o',
-    'y',
-    'g',
-    'b',
-    'v',
-    'e',
-    'w',
-    'd',
-    's'
-};
-char multiply[maxstring][colorcode] =
-{
-    'k',
-    'n',
-    'r',
-    'o',
-    'y',
-    'g',
-    'b',
-    'v',
-    'e',
-    'w',
-    'd',
-    's'
-};
-char toleranced[maxstring][colorcode] =
-{
-    'k',
-    'n',
-    'r',
-    'o',
-    'y',
-    'g',
-    'b',
-    'v',
-    'e',
-    'w',
-    'd',
-    's'
-};
-//check if input char is equal to an array char then assign number by concantenating the first two, multiplying that by the multiplier, then adding %%
-for(i=0;i<12;i++){
-    if(in1 == arr[i]){
+char s1[20];
+char s2[20];
+printf("Your output is: ");
+while(exit!=0){
+   switch(in1) {
+         case 'k' :
+             in1 = (int)0;
+             break;
+         case 'n' :
+             in1 = (int)1;
+             break;
+         case 'r' :
+             in1 = (int)2;
+             break;
+         case 'o' :
+             in1 = (int)3;
+             break;
+         case 'y' :
+             in1 = (int)4;
+             break;
+         case 'g' :
+             in1 = (int)5;
+             break;
+         case 'b' :
+             in1 = (int)6;
+             break;
+         case 'v' :
+             in1 = (int)7;
+             break;
+         case 'e' :
+             in1 = (int)8;
+             break;
+         case 'w' :
+             in1 = (int)9;
+             break;
+      default :
+         printf("Invalid\n");
+         exit=1;
+   }
+   switch(in2) {
+         case 'k' :
+             in2 = (int)0;
+             break;
+         case 'n' :
+             in2 = (int)1;
+             break;
+         case 'r' :
+             in2 = (int)2;
+             break;
+         case 'o' :
+             in2 = (int)3;
+             break;
+         case 'y' :
+             in2 = (int)4;
+             break;
+         case 'g' :
+             in2 = (int)5;
+             break;
+         case 'b' :
+             in2 = (int)6;
+             break;
+         case 'v' :
+             in2 = (int)7;
+             break;
+         case 'e' :
+             in2 = (int)8;
+             break;
+         case 'w' :
+             in2 = (int)9;
+             break;
+      default :
+         printf("Invalid\n");
+         exit=1;
+   }
+sprintf(s1, "%d", in1);
+sprintf(s2, "%d", in2);
+strcat(s1, s2);
+int conc = atoi(s1);
 
-    }
+   switch(in3) {
+         case 'k' :
+         printf("%d ", conc);
+         break;
+         case 'n' :
+         printf("%d ", conc*10);
+         break;
+         case 'r' :
+         printf("%d ", conc*100);
+         break;
+         case 'o' :
+         printf("%d ", conc*1000);
+         break;
+         case 'y' :
+         printf("%d ", conc*10000);
+         break;
+         case 'g' :
+         printf("%d ", conc*100000);
+         break;
+         case 'b' :
+         printf("%d ", conc*1000000);
+         break;
+         case 'v' :
+         printf("%d ", conc*10000000);
+         break;
+         case 'd' :
+         printf("%d ", conc*0.1);
+         break;
+         case 's' :
+         printf("%d ", conc*0.01);
+         break;
+      default :
+         printf("Invalid\n");
+         exit=1;
+   }
+   switch(in4) {
+         case 'k' :
+         printf("+/- 1%%\n" );
+         break;
+         case 'n' :
+         printf("+/- 2%%\n" );
+         break;
+         case 'g' :
+         printf("+/- 0.5%%\n" );
+         break;
+         case 'b' :
+         printf("+/- 0.25%%\n" );
+         break;
+         case 'v' :
+         printf("+/- 0.1%%\n" );
+         break;
+         case 'e' :
+         printf("+/- 0.05%%\n" );
+         break;
+         case 'd' :
+         printf("+/- 5%%\n" );
+         break;
+         case 's' :
+         printf("+/- 10%%\n" );
+         break;
+      default :
+         printf("Invalid\n");
+         exit=1;
+   }
+}
 }
 
-
-
-
-while (userResistance >= 100){
-userResistance= userResistance/10;
-count++;
-}
-
-if(count>0){
-for (i=0;i<count;i++)
-multiplier = base*10;
-}
-while(first >= 10){
-    first = first/10;
-}
-while(second >= 10){
-    second = (second/pow(10,count));
-    second = second %10;
-}
-printf("Your output is: %d +/- %d%\n", resistance, tolerance);
-}

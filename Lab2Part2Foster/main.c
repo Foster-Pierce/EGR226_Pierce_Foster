@@ -29,9 +29,11 @@ print_book(book_array);
 
 void print_book(book_array){
 int i;
+book tout,aout,iout,pout,yout;
 
 for(i=0;i<360;i++){
-    printf("Title: %c", book_array[i].title);
+   tout = book_array[i].title;
+    printf("Title: %c", tout);
 }
 
 
