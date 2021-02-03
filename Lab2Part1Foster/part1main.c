@@ -163,7 +163,7 @@ float tolerance;
 char s1[20];
 char s2[20];
 printf("Your output is: ");
-while(exit!=0){
+while(exit!=1){
    switch(in1) {
          case 'k' :
              in1 = (int)0;
@@ -303,6 +303,7 @@ int conc = atoi(s1);
          printf("Invalid\n");
          exit=1;
    }
+   exit = 1;
 }
 }
 
