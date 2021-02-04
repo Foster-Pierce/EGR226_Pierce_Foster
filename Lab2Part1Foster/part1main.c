@@ -69,7 +69,7 @@ scanf("%d",&decision);
 /****| prompt | *****************************************
 * Brief: Displays the prompt for the program
 * param: void
-* return: N/A
+* return: prompt to the terminal
 *************************************************************/
 void prompt(void) {
 

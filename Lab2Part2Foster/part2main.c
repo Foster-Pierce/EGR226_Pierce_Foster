@@ -1,3 +1,14 @@
+/**************************************************************************************
+* Author: Pierce Foster
+* Course: EGR 226 - 905
+* Date: 02/05/2021
+* Project: Lab 2 Part 2
+* File: part2main.c
+* Description: This code takes a csv of book information, sorts this information
+* into a structure and then asks the user what they would like to search for, either
+* by Title, Author, or ISBN then prints the results to the screen
+**************************************************************************************/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -54,7 +65,11 @@ scanf("%d",&decision);
 }
     return 0;
 }
-
+/****| print_book | *****************************************
+* Brief: Displays every book's information to the screen
+* param: book: books, the structure with book information
+* return: prints every book's information to the terminal
+*************************************************************/
 void print_book(book books){
 char n_a[] = {"N/A"};
 if (books.pages == -1)
@@ -125,6 +140,14 @@ int parse_file(char filename[], book book_array[]) {
 
  return 1;
 }
+/****| search_title | *****************************************
+* Brief: Takes a string input for the title and then returns the results that
+* contain this string
+* param: (book) book_array: array of book structures
+* (int) num: number of elements defined as MaxElements
+* (char) titles[]: array of all the books that fit the search
+* return: prints the correct searched books to the terminal
+*************************************************************/
 void search_title(book book_array[],int num , char titles[]){
 char tsearch[50];
 int i;
@@ -137,7 +160,14 @@ for(i=0;i<MaxElements;i++){
   }
 }
 }
-
+/****| search_author | *****************************************
+* Brief: Takes a string input for the author and then returns the results that
+* contain this string
+* param: (book) book_array: array of book structures
+* (int) num: number of elements defined as MaxElements
+* (char) authors[]: array of all the books that fit the search
+* return: prints the correct searched books to the terminal
+*************************************************************/
 void search_author(book book_array[],int num,char authors[]){
 char tsearch[50];
 int i;
@@ -152,7 +182,14 @@ for(i=0;i<MaxElements;i++){
 
 
 }
-
+/****| search_ISBN | *****************************************
+* Brief: Takes a string input for the ISBN and then returns the results that
+* contain this string
+* param: (book) book_array: array of book structures
+* (int) num: number of elements defined as MaxElements
+* (char) ISBNs[]: array of all the books that fit the search
+* return: prints the correct searched books to the terminal
+*************************************************************/
 void search_ISBN(book book_array[],int num,char ISBNs[]){
 char tsearch[50];
 int i;
