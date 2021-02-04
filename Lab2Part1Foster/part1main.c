@@ -4,7 +4,8 @@
 * Date: 02/05/2021
 * Project: Lab 2 Part 1
 * File: part1main.c
-* Description:
+* Description: This code takes either a color code or resistance number, and converts
+* it to the opposite, printing it on screen.
 **************************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,9 +28,9 @@ char in1,in2,in3,in4;
 
 while (decision!=0){
         prompt();
+        scanf("%d", &choice);
 
-scanf("%d", &choice);
-if (choice==2){
+    if (choice==2){
 while ((getchar()) != '\n');
 getColorBands(&in1,&in2,&in3,&in4);
 printf("%c, %c, %c, %c\n", in1,in2,in3,in4);
@@ -39,6 +40,8 @@ calcResistance(in1,in2,in3,in4);
 printf("to try again press '1' or '0' to quit: \n");
 scanf("%d",&decision);
 }
+
+
 else {
 printf("Please enter integer resistance number\n");
         // error checking for non integer
@@ -92,7 +95,7 @@ printf("--------------------Resistor Codes---------------------\n");
 * Brief: Takes the integer value from the input and
 * assigns the proper color code and prints it to the screen
 * param: int userResistance: resistance number inputted
-* return: N/A
+* return: all 3 resistor band colors in a printed statement
 *************************************************************/
 void calcResistorColors(userResistance) {
 int count = 0, i, base =1, multiplier, first = userResistance, second = userResistance, count2;
@@ -128,7 +131,12 @@ while(second >= 10){
 }
 printf("Your output is: %s-%s-%s\n", arr[first],arr[second],arr[count]);
 }
-
+/****| getColorBands | *****************************************
+* Brief: Takes char input from the user that they want to convert
+* to a resistance number as a pointer to be used later
+* param: char* in1, in2, in3, in4 : pointers to the char inputs
+* return: The 4 char inputs from the user to use in main()
+*************************************************************/
 void getColorBands(char*in1,char*in2,char*in3,char*in4){
 char inp1,inp2,inp3,inp4;
 int exit=1;
@@ -154,15 +162,19 @@ exit = 0;
 }
 return 0;
 }
-
-
-
+/****| calcResistance | *****************************************
+* Brief: Takes char input from the user and converts them into
+* the resistance value and tolerance
+* param: char in1, in2, in3, in4 : char inputs from the user
+* return: value of the resistance
+*************************************************************/
 void calcResistance(char in1,char in2,char in3,char in4){
 int count = 0, i, base =1, multiplier, first, second, third, count2, resistance, exit=0;
 float tolerance;
 char s1[20];
 char s2[20];
-printf("Your output is: ");
+printf("Your output is:\n");
+// going through all cases (inputs) to see if there are any errors, if any are found it displays which one was invalid and ask for retry
 while(exit!=1){
    switch(in1) {
          case 'k' :

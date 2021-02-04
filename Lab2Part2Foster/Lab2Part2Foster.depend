@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1612407294 source:c:\users\pierce\documents\github\egr226_pierce_foster\lab2part2foster\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

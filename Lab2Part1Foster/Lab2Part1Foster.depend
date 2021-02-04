@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1612386358 source:c:\users\pierce\documents\github\egr226_pierce_foster\lab2part1foster\part1main.c
+1612388414 source:c:\users\pierce\documents\github\egr226_pierce_foster\lab2part1foster\part1main.c
 	<stdio.h>
 	<stdlib.h>
 	<math.h>
