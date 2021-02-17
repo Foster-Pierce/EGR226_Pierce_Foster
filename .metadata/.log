@@ -652,3 +652,419 @@ java.io.FileNotFoundException: C:\Users\pierce\Documents\GitHub\EGR226_Pierce_Fo
 
 !ENTRY org.eclipse.cdt.core 1 0 2021-02-05 14:43:53.243
 !MESSAGE Indexed 'Lab3Part3' (2 sources, 10 headers) in 0.344 sec: 1,140 declarations; 2,345 references; 0 unresolved inclusions; 0 syntax errors; 6 unresolved names (0.17%)
+!SESSION 2021-02-11 16:26:10.300 -----------------------------------------------
+eclipse.buildId=4.8.0.I20180611-0500
+java.version=1.8.0_144
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.ti.ccstudio.branding.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.ti.ccstudio.branding.product
+
+!ENTRY com.ti.common.core 1 0 2021-02-11 16:26:14.321
+!MESSAGE path=ccs_base/DebugServer
+
+!ENTRY com.ti.common.core 1 0 2021-02-11 16:26:14.327
+!MESSAGE debugServerDir=C:/ti/ccs930/ccs/ccs_base/DebugServer
+
+!ENTRY org.eclipse.launchbar.core 2 0 2021-02-11 16:26:45.374
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2021-02-11 16:26:45.394
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2021-02-11 16:26:45.409
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY com.ti.ccstudio.ui 1 0 2021-02-11 16:26:45.884
+!MESSAGE CCS IDE session started!
+	CCS build: 9.3.0.00012
+	CCS location: C:/ti/ccs930/ccs
+	Workspace location: C:/Users/pierce/Documents/GitHub/EGR226_Pierce_Foster
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-11 16:26:46.521
+!MESSAGE constructor
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-11 16:26:46.530
+!MESSAGE done with directories
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-11 16:26:46.540
+!MESSAGE loading ti_logger
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-11 16:26:46.550
+!MESSAGE Platform os: win32
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-11 16:26:46.564
+!MESSAGE loading cToolsIF
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-11 16:26:46.611
+!MESSAGE loading cTools
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-11 16:26:46.663
+!MESSAGE loading TraceFactory
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-11 16:26:46.715
+!MESSAGE loading sqlite3
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-11 16:26:46.762
+!MESSAGE loading CloudTrace
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-11 16:26:46.901
+!MESSAGE CloudTrace interface loaded
+
+!ENTRY com.ti.ccstudio.project.ui.webcontent 1 0 2021-02-11 16:26:47.174
+!MESSAGE CCS HTTP adapter started! [ccs.port:61299] - Open 'http://localhost:61299/ide' in web browser to see listing of available APIs...
+!SESSION 2021-02-12 11:39:20.090 -----------------------------------------------
+eclipse.buildId=4.8.0.I20180611-0500
+java.version=1.8.0_144
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.ti.ccstudio.branding.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.ti.ccstudio.branding.product
+
+!ENTRY com.ti.common.core 1 0 2021-02-12 11:39:24.012
+!MESSAGE path=ccs_base/DebugServer
+
+!ENTRY com.ti.common.core 1 0 2021-02-12 11:39:24.015
+!MESSAGE debugServerDir=C:/ti/ccs930/ccs/ccs_base/DebugServer
+
+!ENTRY org.eclipse.launchbar.core 2 0 2021-02-12 11:39:52.296
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2021-02-12 11:39:52.334
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2021-02-12 11:39:52.344
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY com.ti.ccstudio.ui 1 0 2021-02-12 11:39:52.635
+!MESSAGE CCS IDE session started!
+	CCS build: 9.3.0.00012
+	CCS location: C:/ti/ccs930/ccs
+	Workspace location: C:/Users/pierce/Documents/GitHub/EGR226_Pierce_Foster
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-12 11:39:53.336
+!MESSAGE constructor
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-12 11:39:53.346
+!MESSAGE done with directories
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-12 11:39:53.355
+!MESSAGE loading ti_logger
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-12 11:39:53.366
+!MESSAGE Platform os: win32
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-12 11:39:53.375
+!MESSAGE loading cToolsIF
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-12 11:39:53.419
+!MESSAGE loading cTools
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-12 11:39:53.466
+!MESSAGE loading TraceFactory
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-12 11:39:53.514
+!MESSAGE loading sqlite3
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-12 11:39:53.561
+!MESSAGE loading CloudTrace
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-12 11:39:53.700
+!MESSAGE CloudTrace interface loaded
+
+!ENTRY com.ti.ccstudio.project.ui.webcontent 1 0 2021-02-12 11:39:53.895
+!MESSAGE CCS HTTP adapter started! [ccs.port:50019] - Open 'http://localhost:50019/ide' in web browser to see listing of available APIs...
+
+!ENTRY org.eclipse.egit.core 4 0 2021-02-12 11:40:32.317
+!MESSAGE C:\Users\pierce\Documents\GitHub\EGR226_Pierce_Foster\.gitignore (Access is denied)
+!STACK 0
+java.io.FileNotFoundException: C:\Users\pierce\Documents\GitHub\EGR226_Pierce_Foster\.gitignore (Access is denied)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(Unknown Source)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.jgit.treewalk.FileTreeIterator$FileEntry.openInputStream(FileTreeIterator.java:417)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator$PerDirectoryIgnoreNode.load(WorkingTreeIterator.java:1318)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator$RootIgnoreNode.load(WorkingTreeIterator.java:1338)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.getIgnoreNode(WorkingTreeIterator.java:755)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isDirectoryIgnored(WorkingTreeIterator.java:1517)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isDirectoryIgnored(WorkingTreeIterator.java:1495)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:737)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:697)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:684)
+	at org.eclipse.egit.core.RepositoryUtil.canBeAutoIgnored(RepositoryUtil.java:722)
+	at org.eclipse.egit.core.op.ConnectProviderOperation.buildIgnoredPathsList(ConnectProviderOperation.java:282)
+	at org.eclipse.egit.core.op.ConnectProviderOperation.autoIgnoreWorkspaceMetaData(ConnectProviderOperation.java:262)
+	at org.eclipse.egit.core.op.ConnectProviderOperation.connectProject(ConnectProviderOperation.java:192)
+	at org.eclipse.egit.core.op.ConnectProviderOperation.execute(ConnectProviderOperation.java:111)
+	at org.eclipse.egit.core.internal.job.JobUtil$1.run(JobUtil.java:55)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-02-12 11:40:34.846
+!MESSAGE Indexed 'Lab4Part1' (3 sources, 10 headers) in 1.04 sec: 1,142 declarations; 2,355 references; 0 unresolved inclusions; 0 syntax errors; 6 unresolved names (0.17%)
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 14:28:33.265
+!MESSAGE DS_ERROR: CORTEX_M4_0: Trouble Halting Target CPU: (Error -2062 @ 0x0) Unable to halt device. Reset the device, and retry the operation. If error persists, confirm configuration, power-cycle the board, and/or try more reliable JTAG settings (e.g. lower TCLK). (Emulation package 8.4.0.00006) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 14:34:59.791
+!MESSAGE DS_ERROR: CORTEX_M4_0: Trouble Halting Target CPU: (Error -2062 @ 0x0) Unable to halt device. Reset the device, and retry the operation. If error persists, confirm configuration, power-cycle the board, and/or try more reliable JTAG settings (e.g. lower TCLK). (Emulation package 8.4.0.00006) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 14:35:02.353
+!MESSAGE DS_ERROR: CORTEX_M4_0: Trouble Halting Target CPU: (Error -1141 @ 0x136) Device is not responding to the request. Reset the device, and retry the operation. If error persists, confirm configuration, power-cycle the board, and/or try more reliable JTAG settings (e.g. lower TCLK). (Emulation package 8.4.0.00006) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 14:36:17.650
+!MESSAGE DS_ERROR: CORTEX_M4_0: Trouble Halting Target CPU: (Error -1141 @ 0x136) Device is not responding to the request. Reset the device, and retry the operation. If error persists, confirm configuration, power-cycle the board, and/or try more reliable JTAG settings (e.g. lower TCLK). (Emulation package 8.4.0.00006) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 14:36:37.587
+!MESSAGE DS_ERROR: CORTEX_M4_0: Trouble Halting Target CPU: (Error -1141 @ 0x136) Device is not responding to the request. Reset the device, and retry the operation. If error persists, confirm configuration, power-cycle the board, and/or try more reliable JTAG settings (e.g. lower TCLK). (Emulation package 8.4.0.00006) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 14:36:39.119
+!MESSAGE DS_ERROR: CORTEX_M4_0: Can't Run Target CPU: (Error -1268 @ 0xA05F0000) Device is locked up in Hard Fault or in NMI. Reset the device, and retry the operation. If error persists, confirm configuration, power-cycle the board, and/or try more reliable JTAG settings (e.g. lower TCLK). (Emulation package 8.4.0.00006) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 14:46:06.790
+!MESSAGE DS_ERROR: CORTEX_M4_0: Failed CPU Reset: (Error -2063 @ 0x0) Unable to reset device. Power-cycle the board. If error persists, confirm configuration and/or try more reliable JTAG settings (e.g. lower TCLK). (Emulation package 8.4.0.00006) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 14:46:06.808
+!MESSAGE DS_ERROR: CORTEX_M4_0: File Loader: Failed to initialize flash programming: CPU Reset error. Error code -1
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 14:46:06.819
+!MESSAGE DS_ERROR: CORTEX_M4_0: GEL: File: C:\Users\pierce\Documents\GitHub\EGR226_Pierce_Foster\Lab4Part1\Debug\Lab4Part1.out: Load failed.
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 15:35:42.687
+!MESSAGE DS_ERROR: CORTEX_M4_0: GEL: Encountered a problem loading file: C:\Users\pierce\Documents\GitHub\EGR226_Pierce_Foster\Lab4Part1\Debug\Lab4Part1.out Could not open file
+
+
+!ENTRY org.eclipse.egit.core 4 0 2021-02-12 15:35:43.747
+!MESSAGE Ignoring /Lab4Part1/Debug failed
+!STACK 0
+java.io.FileNotFoundException: C:\Users\pierce\Documents\GitHub\EGR226_Pierce_Foster\.gitignore (Access is denied)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(Unknown Source)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.jgit.treewalk.FileTreeIterator$FileEntry.openInputStream(FileTreeIterator.java:417)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator$PerDirectoryIgnoreNode.load(WorkingTreeIterator.java:1318)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator$RootIgnoreNode.load(WorkingTreeIterator.java:1338)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.getIgnoreNode(WorkingTreeIterator.java:755)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isDirectoryIgnored(WorkingTreeIterator.java:1517)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isDirectoryIgnored(WorkingTreeIterator.java:1495)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:737)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:697)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:684)
+	at org.eclipse.jgit.treewalk.FileTreeIterator.createSubtreeIterator(FileTreeIterator.java:212)
+	at org.eclipse.jgit.treewalk.AbstractTreeIterator.createSubtreeIterator(AbstractTreeIterator.java:592)
+	at org.eclipse.jgit.treewalk.TreeWalk.enterSubtree(TreeWalk.java:1300)
+	at org.eclipse.egit.core.RepositoryUtil.canBeAutoIgnored(RepositoryUtil.java:726)
+	at org.eclipse.egit.core.Activator$IgnoreDerivedResources$1.visit(Activator.java:740)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:64)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:74)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:74)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:48)
+	at org.eclipse.egit.core.Activator$IgnoreDerivedResources.resourceChanged(Activator.java:716)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:297)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:287)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:150)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:376)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1499)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:46)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 15:54:20.746
+!MESSAGE DS_ERROR: CORTEX_M4_0: JTAG Communication Error: (Error -613 @ 0x0) The target indicates that it is busy.  Either try the SWD request  again, or abort the transaction. (Emulation package 8.4.0.00006) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 15:54:20.779
+!MESSAGE DS_ERROR: CORTEX_M4_0: Failed to remove the debug state from the target before disconnecting.  There may still be breakpoint op-codes embedded in program memory.  It is recommended that you reset the emulator before you connect and reload your program before you continue debugging
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 15:56:32.689
+!MESSAGE DS_ERROR: CS_DAP_0: Error connecting to the target: (Error -614 @ 0x0) The target indicates there is an error condition from a previous SWD  request. Clear the error the condition, and try the SWD request again. (Emulation package 8.4.0.00006) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 15:56:32.856
+!MESSAGE DS_ERROR: Error connecting to the target:
+(Error -614 @ 0x0)
+The target indicates there is an error condition from a previous SWD 
+request. Clear the error the condition, and try the SWD request again.
+(Emulation package 8.4.0.00006)
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 15:56:41.691
+!MESSAGE DS_ERROR: CS_DAP_0: Error connecting to the target: (Error -614 @ 0x0) The target indicates there is an error condition from a previous SWD  request. Clear the error the condition, and try the SWD request again. (Emulation package 8.4.0.00006) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 15:56:41.716
+!MESSAGE DS_ERROR: Error connecting to the target:
+(Error -614 @ 0x0)
+The target indicates there is an error condition from a previous SWD 
+request. Clear the error the condition, and try the SWD request again.
+(Emulation package 8.4.0.00006)
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 16:11:59.961
+!MESSAGE DS_ERROR: CORTEX_M4_0: Trouble Halting Target CPU: (Error -2062 @ 0x0) Unable to halt device. Reset the device, and retry the operation. If error persists, confirm configuration, power-cycle the board, and/or try more reliable JTAG settings (e.g. lower TCLK). (Emulation package 8.4.0.00006) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 16:12:02.291
+!MESSAGE DS_ERROR: CORTEX_M4_0: Trouble Halting Target CPU: (Error -1141 @ 0x136) Device is not responding to the request. Reset the device, and retry the operation. If error persists, confirm configuration, power-cycle the board, and/or try more reliable JTAG settings (e.g. lower TCLK). (Emulation package 8.4.0.00006) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 16:12:04.025
+!MESSAGE DS_ERROR: CORTEX_M4_0: Can't Run Target CPU: (Error -1268 @ 0xA05F0000) Device is locked up in Hard Fault or in NMI. Reset the device, and retry the operation. If error persists, confirm configuration, power-cycle the board, and/or try more reliable JTAG settings (e.g. lower TCLK). (Emulation package 8.4.0.00006) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 16:12:05.743
+!MESSAGE DS_ERROR: CORTEX_M4_0: Can't Run Target CPU: (Error -1268 @ 0xA05F0000) Device is locked up in Hard Fault or in NMI. Reset the device, and retry the operation. If error persists, confirm configuration, power-cycle the board, and/or try more reliable JTAG settings (e.g. lower TCLK). (Emulation package 8.4.0.00006) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 16:21:52.909
+!MESSAGE DS_ERROR: CORTEX_M4_0: Breakpoint Manager: _JobHardwareBreakpoint::ARM_DEBUG_V7M_fpb_add_breakpoint: FPB : All resources are in use.[22062]
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 16:25:36.097
+!MESSAGE DS_ERROR: CORTEX_M4_0: Breakpoint Manager: _JobHardwareBreakpoint::ARM_DEBUG_V7M_fpb_add_breakpoint: FPB : All resources are in use.[22062]
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 16:26:08.564
+!MESSAGE DS_ERROR: CORTEX_M4_0: Breakpoint Manager: _JobHardwareBreakpoint::ARM_DEBUG_V7M_fpb_add_breakpoint: FPB : All resources are in use.[22062]
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 16:26:58.759
+!MESSAGE DS_ERROR: CORTEX_M4_0: JTAG Communication Error: (Error -261 @ 0x0) Invalid response was received from the XDS110. (Emulation package 8.4.0.00006) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-02-12 16:26:58.789
+!MESSAGE DS_ERROR: CORTEX_M4_0: Failed to remove the debug state from the target before disconnecting.  There may still be breakpoint op-codes embedded in program memory.  It is recommended that you reset the emulator before you connect and reload your program before you continue debugging
+
+!SESSION 2021-02-17 15:46:42.410 -----------------------------------------------
+eclipse.buildId=4.8.0.I20180611-0500
+java.version=1.8.0_144
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product com.ti.ccstudio.branding.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.ti.ccstudio.branding.product
+
+!ENTRY com.ti.common.core 1 0 2021-02-17 15:46:47.001
+!MESSAGE path=ccs_base/DebugServer
+
+!ENTRY com.ti.common.core 1 0 2021-02-17 15:46:47.003
+!MESSAGE debugServerDir=C:/ti/ccs930/ccs/ccs_base/DebugServer
+
+!ENTRY org.eclipse.launchbar.core 2 0 2021-02-17 15:47:20.225
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2021-02-17 15:47:20.244
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2021-02-17 15:47:20.265
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY com.ti.ccstudio.ui 1 0 2021-02-17 15:47:20.906
+!MESSAGE CCS IDE session started!
+	CCS build: 9.3.0.00012
+	CCS location: C:/ti/ccs930/ccs
+	Workspace location: C:/Users/pierce/Documents/GitHub/EGR226_Pierce_Foster
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-17 15:47:21.563
+!MESSAGE constructor
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-17 15:47:21.563
+!MESSAGE done with directories
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-17 15:47:21.579
+!MESSAGE loading ti_logger
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-17 15:47:21.595
+!MESSAGE Platform os: win32
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-17 15:47:21.610
+!MESSAGE loading cToolsIF
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-17 15:47:21.655
+!MESSAGE loading cTools
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-17 15:47:21.706
+!MESSAGE loading TraceFactory
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-17 15:47:21.758
+!MESSAGE loading sqlite3
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-17 15:47:21.807
+!MESSAGE loading CloudTrace
+
+!ENTRY com.ti.dbgtrc.webapp.CloudTraceInterface 0 0 2021-02-17 15:47:21.933
+!MESSAGE CloudTrace interface loaded
+
+!ENTRY com.ti.ccstudio.project.ui.webcontent 1 0 2021-02-17 15:47:22.104
+!MESSAGE CCS HTTP adapter started! [ccs.port:63947] - Open 'http://localhost:63947/ide' in web browser to see listing of available APIs...
+
+!ENTRY org.eclipse.egit.core 4 0 2021-02-17 15:51:54.580
+!MESSAGE Ignoring /Lab4Part1/Debug failed
+!STACK 0
+java.io.FileNotFoundException: C:\Users\pierce\Documents\GitHub\EGR226_Pierce_Foster\.gitignore (Access is denied)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(Unknown Source)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.jgit.treewalk.FileTreeIterator$FileEntry.openInputStream(FileTreeIterator.java:417)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator$PerDirectoryIgnoreNode.load(WorkingTreeIterator.java:1318)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator$RootIgnoreNode.load(WorkingTreeIterator.java:1338)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.getIgnoreNode(WorkingTreeIterator.java:755)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isDirectoryIgnored(WorkingTreeIterator.java:1517)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isDirectoryIgnored(WorkingTreeIterator.java:1495)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:737)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:697)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:684)
+	at org.eclipse.jgit.treewalk.FileTreeIterator.createSubtreeIterator(FileTreeIterator.java:212)
+	at org.eclipse.jgit.treewalk.AbstractTreeIterator.createSubtreeIterator(AbstractTreeIterator.java:592)
+	at org.eclipse.jgit.treewalk.TreeWalk.enterSubtree(TreeWalk.java:1300)
+	at org.eclipse.egit.core.RepositoryUtil.canBeAutoIgnored(RepositoryUtil.java:726)
+	at org.eclipse.egit.core.Activator$IgnoreDerivedResources$1.visit(Activator.java:740)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:64)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:74)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:74)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:48)
+	at org.eclipse.egit.core.Activator$IgnoreDerivedResources.resourceChanged(Activator.java:716)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:297)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:287)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:150)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:376)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1499)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2302)
+	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:41)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+
+!ENTRY org.eclipse.egit.core 4 0 2021-02-17 15:56:15.655
+!MESSAGE C:\Users\pierce\Documents\GitHub\EGR226_Pierce_Foster\.gitignore (Access is denied)
+!STACK 0
+java.io.FileNotFoundException: C:\Users\pierce\Documents\GitHub\EGR226_Pierce_Foster\.gitignore (Access is denied)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(Unknown Source)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at org.eclipse.jgit.treewalk.FileTreeIterator$FileEntry.openInputStream(FileTreeIterator.java:417)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator$PerDirectoryIgnoreNode.load(WorkingTreeIterator.java:1318)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator$RootIgnoreNode.load(WorkingTreeIterator.java:1338)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.getIgnoreNode(WorkingTreeIterator.java:755)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isDirectoryIgnored(WorkingTreeIterator.java:1517)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isDirectoryIgnored(WorkingTreeIterator.java:1495)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:737)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:697)
+	at org.eclipse.jgit.treewalk.WorkingTreeIterator.isEntryIgnored(WorkingTreeIterator.java:684)
+	at org.eclipse.egit.core.RepositoryUtil.canBeAutoIgnored(RepositoryUtil.java:722)
+	at org.eclipse.egit.core.op.ConnectProviderOperation.buildIgnoredPathsList(ConnectProviderOperation.java:282)
+	at org.eclipse.egit.core.op.ConnectProviderOperation.autoIgnoreWorkspaceMetaData(ConnectProviderOperation.java:262)
+	at org.eclipse.egit.core.op.ConnectProviderOperation.connectProject(ConnectProviderOperation.java:192)
+	at org.eclipse.egit.core.op.ConnectProviderOperation.execute(ConnectProviderOperation.java:111)
+	at org.eclipse.egit.core.internal.job.JobUtil$1.run(JobUtil.java:55)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-02-17 15:56:17.694
+!MESSAGE Indexed 'Lab4Part2' (3 sources, 10 headers) in 0.527 sec: 1,142 declarations; 2,355 references; 0 unresolved inclusions; 0 syntax errors; 6 unresolved names (0.17%)
