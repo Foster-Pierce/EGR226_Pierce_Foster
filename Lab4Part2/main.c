@@ -2,6 +2,7 @@
 
 int DebounceSwitch1(void);
 int DebounceSwitch2(void);
+void LEDcycle(void);
 
 void main(void)
 {
@@ -17,8 +18,8 @@ void main(void)
     P2SEL1 &= ~BIT0; // configure P2.0 as simple I/O
     P2SEL0 &= ~BIT0;
     P2DIR |= BIT0;
-    P1REN &= ~BIT0;
-    P1OUT &= ~BIT0;
+    P2REN &= ~BIT0;
+    P2OUT &= ~BIT0;
 
     P2SEL1 &= ~BIT1; // configure P2.1 as simple I/O
     P2SEL0 &= ~BIT1;
@@ -33,10 +34,9 @@ void main(void)
     P2OUT &= ~BIT2;
 
     while(1){
-
         while(DebounceSwitch2());
-        //if LED starts off
-        if((P2OUT & BIT0)|| (P2OUT & BIT1)|| (P2OUT & BIT2) ==0){
+
+        if(((P2OUT & BIT0)||(P2OUT & BIT1)||(P2OUT & BIT2))==0){
             while(DebounceSwitch1()){
 
                 P2OUT ^= BIT0;
@@ -53,70 +53,79 @@ void main(void)
                 __delay_cycles(3000000);
                 if(DebounceSwitch1())
                     P2OUT ^= BIT2;
-
             }
         }
-        // if LED starts RED
-        else if((P2OUT & BIT0)==BIT0){
-            while(DebounceSwitch1()){
+        else
+            LEDcycle();
+    }
+}
 
-                P2OUT &= ~BIT0;
+void LEDcycle(void){
+    int red = P2OUT & BIT0;
+    int green = P2OUT & BIT1;
+    int blue = P2OUT & BIT2;
+
+    // if LED starts RED
+    if(red==BIT0){
+        while(DebounceSwitch1()){
+
+            P2OUT &=~ BIT0;
+            P2OUT ^= BIT1;
+            __delay_cycles(3000000);
+            if(DebounceSwitch1()){
                 P2OUT ^= BIT1;
-                __delay_cycles(3000000);
-                if(DebounceSwitch1()){
-                    P2OUT ^= BIT1;
-                    P2OUT ^= BIT2;
-                }
-                __delay_cycles(3000000);
-                if(DebounceSwitch1()){
-                    P2OUT ^= BIT2;
-                    P2OUT ^= BIT0;
-                }
-                __delay_cycles(3000000);
-
-            }
-        }
-        // if LED starts GREEN
-        else if((P2OUT & BIT1)==BIT1){
-            while(DebounceSwitch1()){
-
-                P2OUT &= ~BIT1;
                 P2OUT ^= BIT2;
-                __delay_cycles(3000000);
-                if(DebounceSwitch1()){
-                    P2OUT ^= BIT2;
-                    P2OUT ^= BIT0;
-                }
-                __delay_cycles(3000000);
-                if(DebounceSwitch1()){
-                    P2OUT ^= BIT0;
-                    P2OUT ^= BIT1;
-                }
-                __delay_cycles(3000000);
-
             }
-        }
-        // if LED starts BLUE
-        else if((P2OUT & BIT2)==BIT2){
-            while(DebounceSwitch1()){
-
-                P2OUT &=~ BIT2;
+            __delay_cycles(3000000);
+            if(DebounceSwitch1()){
+                P2OUT ^= BIT2;
                 P2OUT ^= BIT0;
-                __delay_cycles(3000000);
-                if(DebounceSwitch1()){
-                    P2OUT ^= BIT0;
-                    P2OUT ^= BIT1;
-                }
-                __delay_cycles(3000000);
-                if(DebounceSwitch1()){
-                    P2OUT ^= BIT1;
-                    P2OUT ^= BIT2;
-                }
-                __delay_cycles(3000000);
-
             }
-        }
+            __delay_cycles(3000000);
 
+        }
+    }
+
+    // if LED starts GREEN
+    else if(green==BIT1){
+        while(DebounceSwitch1()){
+
+            P2OUT &=~ BIT1;
+            P2OUT ^= BIT2;
+            __delay_cycles(3000000);
+            if(DebounceSwitch1()){
+                P2OUT ^= BIT2;
+                P2OUT ^= BIT0;
+            }
+            __delay_cycles(3000000);
+            if(DebounceSwitch1()){
+                P2OUT ^= BIT0;
+                P2OUT ^= BIT1;
+            }
+            __delay_cycles(3000000);
+
+        }
+    }
+
+    // if LED starts BLUE
+    else if(blue==BIT2){
+        while(DebounceSwitch1()){
+
+            P2OUT &=~ BIT2;
+            P2OUT ^= BIT0;
+            __delay_cycles(3000000);
+            if(DebounceSwitch1()){
+                P2OUT ^= BIT0;
+                P2OUT ^= BIT1;
+            }
+            __delay_cycles(3000000);
+            if(DebounceSwitch1()){
+                P2OUT ^= BIT1;
+                P2OUT ^= BIT2;
+            }
+            __delay_cycles(3000000);
+
+        }
     }
 }
 
