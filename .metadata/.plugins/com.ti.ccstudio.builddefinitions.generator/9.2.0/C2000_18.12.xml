@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 
-<!-- Auto-generated from: C:\Users\pierce\Documents\GitHub\EGR226_Pierce_Foster\.metadata\.plugins\com.ti.ccstudio.builddefinitions.generator\native\C2000_18.12.4.LTS.xml -->
+<!-- Auto-generated from: C:\Users\pierce\Documents\GitHub\EGR226_Pierce_Foster\.metadata\.plugins\com.ti.ccstudio.builddefinitions.generator\native\C2000_18.12.7.LTS.xml -->
 
 <plugin>
 
@@ -1606,7 +1606,7 @@ Level 3 (-op3) indicates that the module has functions that are called by other 
 			<option
 				id="com.ti.ccstudio.buildDefinitions.C2000_18.12.compilerID.ANALYZE"
 				name="Generate analysis info from profile data (--analyze)"
-				tip="Aliases: --analyze&lt;BODY&gt;Generate analysis information about code coverage or call graph information in the form of CSV files.  This information can then be read and interpreted by other tools.  For example, the cache layout tool, clt6x, can be used to interpret the call graph information and produce a preferred function order that can be incorporated into the application link.  The compiler can only generate one kind of analysis information for a given invocation of the compiler."
+				tip="Aliases: --analyze&lt;BODY&gt;Generate analysis information about code coverage in the form of CSV files.  This information can then be read and interpreted by other tools."
 				category="com.ti.ccstudio.buildDefinitions.C2000_18.12.cat.compilerID.FEEDBACK"
 				command="--analyze"
 				valueType="enumerated">
@@ -1618,10 +1618,6 @@ Level 3 (-op3) indicates that the module has functions that are called by other 
 					id="com.ti.ccstudio.buildDefinitions.C2000_18.12.compilerID.ANALYZE.codecov"
 					name="codecov"
 					command="--analyze=codecov"/>
-				<enumeratedOptionValue
-					id="com.ti.ccstudio.buildDefinitions.C2000_18.12.compilerID.ANALYZE.callgraph"
-					name="callgraph"
-					command="--analyze=callgraph"/>
 			</option>
 			<option
 				id="com.ti.ccstudio.buildDefinitions.C2000_18.12.compilerID.ANALYZE_ONLY"
@@ -4330,7 +4326,6 @@ NOTE: User can specify --retain='*(*)' to retain all the sections from all the i
 			<option command="--remove_hooks_when_inlining" tag="REMOVE_HOOKS_WHEN_INLINING"/>
 			<option command="--gen_profile_info" tag="GEN_PROFILE_INFO"/>
 			<option command="--analyze=codecov" tag="ANALYZE.codecov"/>
-			<option command="--analyze=callgraph" tag="ANALYZE.callgraph"/>
 			<option command="--analyze_only" tag="ANALYZE_ONLY"/>
 			<option command="--use_profile_info" tag="USE_PROFILE_INFO"/>
 			<option command="-ol1" tag="STD_LIB_FUNC_DEFINED"/>

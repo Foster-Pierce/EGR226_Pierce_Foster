@@ -1,0 +1,36 @@
+
+**** Build of configuration Debug for project Lab5Part1 ****
+
+"C:\\ti\\ccs930\\ccs\\utils\\bin\\gmake" -k -j 4 all -O 
+ 
+Building file: "../main.c"
+Invoking: ARM Compiler
+"C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs930/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs930/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/pierce/Documents/GitHub/EGR226_Pierce_Foster/Lab5Part1" --include_path="C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include" --advice:power=all --define=__MSP432P401V__ --define=ccs -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="main.d_raw"  "../main.c"
+ 
+>> Compilation failure
+subdir_rules.mk:9: recipe for target 'main.obj' failed
+"../main.c", line 20: error #20: identifier "P1SEL1" is undefined
+"../main.c", line 21: error #20: identifier "P1SEL0" is undefined
+"../main.c", line 22: error #20: identifier "P1DIR" is undefined
+"../main.c", line 23: error #20: identifier "P1REN" is undefined
+"../main.c", line 24: error #20: identifier "P1OUT" is undefined
+"../main.c", line 26: error #20: identifier "P2SEL1" is undefined
+"../main.c", line 27: error #20: identifier "P2SEL0" is undefined
+"../main.c", line 28: error #20: identifier "P2DIR" is undefined
+"../main.c", line 35: error #20: identifier "P2REN" is undefined
+"../main.c", line 36: error #20: identifier "P2OUT" is undefined
+"../main.c", line 46: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"../main.c", line 53: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"../main.c", line 54: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"../main.c", line 62: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"../main.c", line 63: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"../main.c", line 71: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"../main.c", line 83: error #20: identifier "P1IN" is undefined
+"../main.c", line 85: remark #1527-D: (ULP 2.1) Detected SW delay loop using __delay_cycles. Recommend using a timer module instead
+"../main.c", line 100: error #20: identifier "P1IN" is undefined
+"../main.c", line 102: remark #1527-D: (ULP 2.1) Detected SW delay loop using __delay_cycles. Recommend using a timer module instead
+12 errors detected in the compilation of "../main.c".
+gmake: *** [main.obj] Error 1
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****

@@ -1,0 +1,1 @@
+"./main.obj" "./startup_msp432p401v_ccs.obj" "./system_msp432p401v.obj" "../msp432p401v.cmd" -llibc.a 

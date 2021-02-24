@@ -1,0 +1,115 @@
+/**************************************************************************************
+ * Author: Pierce Foster
+ * Course: EGR 226 - 905
+ * Date: 02/26/2021
+ * Project: Lab 5 Part 1
+ * File: part1main.c
+ * Description: This code makes the LED cycle through red, green, and blue when the button
+ * is pressed once, and stays on that color if the button is held down.
+ **************************************************************************************/
+#include "msp.h"
+
+int DebounceSwitchPress(void);
+int DebounceSwitchRelease(void);
+void LEDcycle(void);
+
+void main(void)
+{
+    WDT_A->CTL = WDT_A_CTL_PW | WDT_A_CTL_HOLD;     // stop watchdog timer
+    //Configure GPIO for ports 4.0, 4.2, 4.4 as gpio for the LEDs and port 4.6 for the switch
+
+ //   P4SEL1 &= ~BIT0; // configure P4.0 as simple I/O for the RED LED
+  //  P4SEL0 &= ~BIT0;
+  //  P4DIR |= BIT0;
+  //  P4REN &= ~BIT0;
+  //  P4OUT &= ~BIT0;
+
+    P4SEL1 &= ~BIT2; // configure P4.2 as simple I/O for the YELLOW LED
+    P4SEL0 &= ~BIT2;
+    P4DIR |= BIT2;
+    P4REN &= ~BIT2;
+    P4OUT &= ~BIT2;
+
+    P4SEL1 &= ~BIT4; // configure P4.4 as simple I/O for the GREEN LED
+    P4SEL0 &= ~BIT4;
+    P4DIR |= BIT4;
+    P4REN &= ~BIT4;
+    P4OUT &= ~BIT4;
+
+    P4SEL1 &= ~BIT6; // configure P4.6 as simple I/O for the SWITCH
+    P4SEL0 &= ~BIT6;
+    P4DIR &= ~BIT6;
+    P4REN |= BIT6;
+    P4OUT |= BIT6;
+
+
+    while(1){
+        LEDcycle();
+    }
+}
+
+void LEDcycle(void){
+    //first press
+    while(DebounceSwitchRelease());
+    //if green is on, turn it off and then turn on red
+    if((P4OUT & BIT4)==BIT4){
+        P4OUT ^= BIT4;
+    }
+    P4OUT ^= BIT0;
+
+    while(DebounceSwitchPress());
+    while(DebounceSwitchRelease());
+
+    //second press
+    //if red is on, turn it off and then turn on yellow
+    if((P4OUT & BIT0)==BIT0)
+        P4OUT ^= BIT0;
+
+    P4OUT ^= BIT2;
+
+    while(DebounceSwitchPress());
+    while(DebounceSwitchRelease());
+
+    //third press
+    //if yellow is on, turn it off and then turn on green
+    if((P4OUT & BIT2)==BIT2)
+        P4OUT ^= BIT2;
+
+    P4OUT ^= BIT4;
+
+    while(DebounceSwitchPress());
+}
+/****| DebounceSwitch1 | *****************************************
+ * Brief: Debouncing function for when the button is pressed, so
+ * that no noise is contributed to the output of other functions.
+ * param: void
+ * return: int; 1 if successful, 0 if not
+ *************************************************************/
+int DebounceSwitchPress(void)
+{
+    int pin_Value = 0;
+    if ((P4IN & BIT6) == 0)
+    {
+        __delay_cycles(30000);
+        if ((P4IN & BIT6) == 0)
+            pin_Value = 1;
+    }
+    return pin_Value; //return 1 if pushed- 0 if not pushed
+}
+/****| DebounceSwitch2 | *****************************************
+ * Brief: Debouncing function for when the button is not pressed, so
+ * that no noise is contributed to the output of other functions.
+ * param: void
+ * return: int; 1 if successful, 0 if not
+ *************************************************************/
+int DebounceSwitchRelease(void)
+{
+    int pin_Value = 0;
+    if ((P4IN & BIT6) == BIT6)
+    {
+        __delay_cycles(30000);
+        if ((P4IN & BIT6) == BIT6)
+            pin_Value = 1;
+    }
+    return pin_Value; //return 1 if not pushed- 0 if pushed
+}
