@@ -1,14 +1,15 @@
 /**************************************************************************************
-* Author: Pierce Foster
-* Course: EGR 226 - 905
-* Date: 02/19/2021
-* Project: Lab 4 Part 1
-* File: part1main.c
-* Description: This code makes the LED cycle through red, green, and blue when the button
-* is pressed once, and stays on that color if the button is held down.
-**************************************************************************************/
+ * Author: Pierce Foster
+ * Course: EGR 226 - 905
+ * Date: 02/26/2021
+ * Project: Lab 5 Part 1
+ * File: part1main.c
+ * Description: This code makes the LED cycle through red, yellow, and green when the button
+ * is pressed once, and stays on that color if the button is held down.
+ **************************************************************************************/
 #include "msp.h"
 
+void Initialize(void);
 int DebounceSwitch1(void);
 int DebounceSwitch2(void);
 void SysTick_delay(int n);
@@ -16,31 +17,7 @@ void SysTick_delay(int n);
 void main(void)
 {
     WDT_A->CTL = WDT_A_CTL_PW | WDT_A_CTL_HOLD;     // stop watchdog timer
-    //Configure GPIO
-
-    P4SEL1 &= ~BIT6; // configure P4.6 as simple I/O SWITCH
-    P4SEL0 &= ~BIT6;
-    P4DIR &= ~BIT6;
-    P4REN |= BIT6;
-    P4OUT |= BIT6;
-
-    P4SEL1 &= ~BIT0; // configure P4.0 as simple I/O RED
-    P4SEL0 &= ~BIT0;
-    P4DIR |= BIT0;
-    P4REN &= ~BIT0;
-    P4OUT &= ~BIT0;
-
-    P4SEL1 &= ~BIT2; // configure P4.2 as simple I/O YELLOW
-    P4SEL0 &= ~BIT2;
-    P4DIR |= BIT2;
-    P4REN &= ~BIT2;
-    P4OUT &= ~BIT2;
-
-    P4SEL1 &= ~BIT4; // configure P4.4 as simple I/O GREEN
-    P4SEL0 &= ~BIT4;
-    P4DIR |= BIT4;
-    P4REN &= ~BIT4;
-    P4OUT &= ~BIT4;
+    Initialize();
 
     while(1){
         //first press
@@ -72,12 +49,44 @@ void main(void)
         while(DebounceSwitch1());
     }
 }
+/****| Initialize | *****************************************
+ * Brief: Initializes all the ports and pins used
+ * param: void
+ * return: void
+ *************************************************************/
+void Initialize(void){
+    //Configure GPIO
+
+    P4SEL1 &= ~BIT6; // configure P4.6 as simple I/O SWITCH
+    P4SEL0 &= ~BIT6;
+    P4DIR &= ~BIT6;
+    P4REN |= BIT6;
+    P4OUT |= BIT6;
+
+    P4SEL1 &= ~BIT0; // configure P4.0 as simple I/O RED
+    P4SEL0 &= ~BIT0;
+    P4DIR |= BIT0;
+    P4REN &= ~BIT0;
+    P4OUT &= ~BIT0;
+
+    P4SEL1 &= ~BIT2; // configure P4.2 as simple I/O YELLOW
+    P4SEL0 &= ~BIT2;
+    P4DIR |= BIT2;
+    P4REN &= ~BIT2;
+    P4OUT &= ~BIT2;
+
+    P4SEL1 &= ~BIT4; // configure P4.4 as simple I/O GREEN
+    P4SEL0 &= ~BIT4;
+    P4DIR |= BIT4;
+    P4REN &= ~BIT4;
+    P4OUT &= ~BIT4;
+}
 /****| DebounceSwitch1 | *****************************************
-* Brief: Debouncing function for when the button is pressed, so
-* that no noise is contributed to the output of other functions.
-* param: void
-* return: int; 1 if successful, 0 if not
-*************************************************************/
+ * Brief: Debouncing function for when the button is pressed, so
+ * that no noise is contributed to the output of other functions.
+ * param: void
+ * return: int; 1 if successful, 0 if not
+ *************************************************************/
 int DebounceSwitch1(void)
 {
     int pin_Value = 0;
@@ -90,11 +99,11 @@ int DebounceSwitch1(void)
     return pin_Value; //return 1 if pushed- 0 if not pushed
 }
 /****| DebounceSwitch2 | *****************************************
-* Brief: Debouncing function for when the button is not pressed, so
-* that no noise is contributed to the output of other functions.
-* param: void
-* return: int; 1 if successful, 0 if not
-*************************************************************/
+ * Brief: Debouncing function for when the button is not pressed, so
+ * that no noise is contributed to the output of other functions.
+ * param: void
+ * return: int; 1 if successful, 0 if not
+ *************************************************************/
 int DebounceSwitch2(void)
 {
     int pin_Value = 0;
@@ -106,7 +115,11 @@ int DebounceSwitch2(void)
     }
     return pin_Value; //return 1 if not pushed- 0 if pushed
 }
-
+/****| SysTick_delay | *****************************************
+ * Brief: Delay using Systick per millisecond
+ * param: int n: number of milliseconds to delay
+ * return: void
+ *************************************************************/
 void SysTick_delay(int n){
     int i;
     SysTick->LOAD=(3000-1);

@@ -1,7 +1,7 @@
 /**************************************************************************************
  * Author: Pierce Foster
  * Course: EGR 226 - 905
- * Date: 02/19/2021
+ * Date: 02/26/2021
  * Project: Lab 5 Part 3
  * File: part2main.c
  * Description: This code makes the LED cycle through red, green, and blue while the button
@@ -9,16 +9,9 @@
  **************************************************************************************/
 #include "msp.h"
 
-
-//fix color names in LEDcyles (they are RGB not RYG) funcs and change func blocks, etc
-
-
-
-
+void Initialize(void);
 int DebounceSwitch1(void);
-int DebounceSwitch2(void);
 int DebounceSwitch1Rev(void);
-int DebounceSwitch2Rev(void);
 void LEDcycle(void);
 void LEDcycleReverse(void);
 void SysTick_delay(int n);
@@ -26,6 +19,24 @@ void SysTick_delay(int n);
 void main(void)
 {
     WDT_A->CTL = WDT_A_CTL_PW | WDT_A_CTL_HOLD;     // stop watchdog timer
+    Initialize();
+
+    while(1){
+
+        if(DebounceSwitch1())
+            LEDcycle();
+
+        else if(DebounceSwitch1Rev())
+            LEDcycleReverse();
+
+    }
+}
+/****| Initialize | *****************************************
+ * Brief: Initializes all the ports and pins used
+ * param: void
+ * return: void
+ *************************************************************/
+void Initialize(void){
     //Configure GPIO
 
     P4SEL1 &= ~BIT6; // configure P4.6 as simple I/O SWITCH 1 (BLACK)
@@ -57,16 +68,6 @@ void main(void)
     P4DIR |= BIT4;
     P4REN &= ~BIT4;
     P4OUT &= ~BIT4;
-
-    while(1){
-
-        if(DebounceSwitch1())
-            LEDcycle();
-
-        else if(DebounceSwitch1Rev())
-            LEDcycleReverse();
-
-    }
 }
 /****| LEDcycle | *****************************************
  * Brief: When the LED is R, G, or B the program changes
@@ -76,8 +77,8 @@ void main(void)
  *************************************************************/
 void LEDcycle(void){
     int red = P4OUT & BIT0;
-    int green = P4OUT & BIT2;
-    int blue = P4OUT & BIT4;
+    int yellow = P4OUT & BIT2;
+    int green = P4OUT & BIT4;
 
     //if LED starts off
     if(((P4OUT & BIT0)||(P4OUT & BIT2)||(P4OUT & BIT4))==0){
@@ -122,8 +123,8 @@ void LEDcycle(void){
         }
     }
 
-    // if LED starts GREEN
-    else if(green==BIT2){
+    // if LED starts YELLOW
+    else if(yellow==BIT2){
         while(DebounceSwitch1()){
 
             P4OUT &=~ BIT2;
@@ -143,8 +144,8 @@ void LEDcycle(void){
         }
     }
 
-    // if LED starts BLUE
-    else if(blue==BIT4){
+    // if LED starts GREEN
+    else if(green==BIT4){
         while(DebounceSwitch1()){
 
             P4OUT &=~ BIT4;
@@ -164,14 +165,19 @@ void LEDcycle(void){
         }
     }
 }
-
+/****| LEDcycleReverse | *****************************************
+ * Brief: When the LED is R, Y, or G the program changes
+ * color based on what color it starts at.
+ * param: void
+ * return: void
+ *************************************************************/
 void LEDcycleReverse(void){
     int red = P4OUT & BIT0;
-    int green = P4OUT & BIT2;
-    int blue = P4OUT & BIT4;
+    int yellow = P4OUT & BIT2;
+    int green = P4OUT & BIT4;
 
-   // while(DebounceSwitch2Rev());
-    //if LED starts off
+
+    //if LED starts OFF
     if(((P4OUT & BIT0)||(P4OUT & BIT2)||(P4OUT & BIT4))==0){
         while(DebounceSwitch1Rev()){
 
@@ -213,8 +219,8 @@ void LEDcycleReverse(void){
         }
     }
 
-    // if LED starts GREEN
-    else if(green==BIT2){
+    // if LED starts YELLOW
+    else if(yellow==BIT2){
         while(DebounceSwitch1Rev()){
 
             P4OUT &=~ BIT2;
@@ -234,8 +240,8 @@ void LEDcycleReverse(void){
         }
     }
 
-    // if LED starts BLUE
-    else if(blue==BIT4){
+    // if LED starts GREEN
+    else if(green==BIT4){
         while(DebounceSwitch1Rev()){
 
             P4OUT &=~ BIT4;
@@ -272,24 +278,12 @@ int DebounceSwitch1(void)
     }
     return pin_Value; //return 1 if pushed- 0 if not pushed
 }
-/****| DebounceSwitch2 | *****************************************
- * Brief: Debouncing function for when the button is not pressed, so
+/****| DebounceSwitch1Rev | *****************************************
+ * Brief: Debouncing function for when the button is pressed, so
  * that no noise is contributed to the output of other functions.
  * param: void
  * return: int; 1 if successful, 0 if not
  *************************************************************/
-int DebounceSwitch2(void)
-{
-    int pin_Value = 0;
-    if ((P4IN & BIT6) == BIT6)
-    {
-        SysTick_delay(10);
-        if ((P4IN & BIT6) == BIT6)
-            pin_Value = 1;
-    }
-    return pin_Value; //return 1 if not pushed- 0 if pushed
-}
-
 int DebounceSwitch1Rev(void)
 {
     int pin_Value = 0;
@@ -301,24 +295,11 @@ int DebounceSwitch1Rev(void)
     }
     return pin_Value; //return 1 if pushed- 0 if not pushed
 }
-/****| DebounceSwitch2 | *****************************************
- * Brief: Debouncing function for when the button is not pressed, so
- * that no noise is contributed to the output of other functions.
- * param: void
- * return: int; 1 if successful, 0 if not
+/****| SysTick_delay | *****************************************
+ * Brief: Delay using Systick per millisecond
+ * param: int n: number of milliseconds to delay
+ * return: void
  *************************************************************/
-int DebounceSwitch2Rev(void)
-{
-    int pin_Value = 0;
-    if ((P4IN & BIT7) == BIT7)
-    {
-        SysTick_delay(10);
-        if ((P4IN & BIT7) == BIT7)
-            pin_Value = 1;
-    }
-    return pin_Value; //return 1 if not pushed- 0 if pushed
-}
-
 void SysTick_delay(int n){
     int i;
     SysTick->LOAD=(3000-1);
