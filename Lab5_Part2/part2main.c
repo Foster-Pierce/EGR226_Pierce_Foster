@@ -21,7 +21,7 @@ void main(void)
 
     Initialize();
     while(1){
-        while(DebounceSwitch2());
+    //    while(DebounceSwitch2());
         LEDcycle();
     }
 }
