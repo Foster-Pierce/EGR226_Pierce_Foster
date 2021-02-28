@@ -88,13 +88,13 @@ int Keypad_Read(void){
 void Keypad_Print(int num){
 
     if((num<=9)&&(num>0))
-        printf("KEY: [%d]\n", num);
+        printf("%d\n", num);
     else if(num==10)
-        printf("KEY: [*]\n");
+        printf("*\n");
     else if(num==11)
-        printf("KEY: [0]\n");
+        printf("0\n");
     else if(num==12)
-        printf("KEY: [#]\n");
+        printf("#\n");
 
 }
 /****| SysTick_delay | *****************************************

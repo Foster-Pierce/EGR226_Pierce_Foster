@@ -1,12 +1,3 @@
-/**************************************************************************************
- * Author: Pierce Foster
- * Course: EGR 226 - 905
- * Date: 03/05/2021
- * Project: Lab 6 Part 1
- * File: part1main.c
- * Description: This code makes the LED cycle through red, green, and blue while the button
- * is being pressed. This includes debouncing functions to ensure the inputs are correct.
- **************************************************************************************/
 #include "msp.h"
 #include <stdio.h>
 
@@ -27,11 +18,6 @@ void main(void)
         SysTick_delay(10);
     }
 }
-/****| Keypad_init | *****************************************
- * Brief: Initializes all the ports and pins used
- * param: void
- * return: void
- *************************************************************/
 void Keypad_init(void){
     //Configure GPIO ROWS: P4 .0 .1 .2 .3 & COL: P4 .4 .5 .6
 
@@ -46,12 +32,7 @@ void Keypad_init(void){
     P4REN &= ~(BIT4 | BIT5 | BIT6);
     P4OUT &= ~(BIT4 | BIT5 | BIT6);
 }
-/****| Keypad_Read | *****************************************
- * Brief: Determines which button was pressed on the keypad
- * then returns the number code for that key
- * param: void
- * return: int; number code that was pressed
- *************************************************************/
+
 int Keypad_Read(void){
     int col, row, num;
     for (col = 0; col < 3; col++)
@@ -80,28 +61,20 @@ int Keypad_Read(void){
 
     return num;
 }
-/****| Keypad_Print | *****************************************
- * Brief: Prints the key pressed to the console
- * param: int: number code
- * return: void
- *************************************************************/
+
 void Keypad_Print(int num){
 
     if((num<=9)&&(num>0))
-        printf("KEY: [%d]\n", num);
+        printf("%d\n", num);
     else if(num==10)
-        printf("KEY: [*]\n");
+        printf("*\n");
     else if(num==11)
-        printf("KEY: [0]\n");
+        printf("0\n");
     else if(num==12)
-        printf("KEY: [#]\n");
+        printf("#\n");
 
 }
-/****| SysTick_delay | *****************************************
- * Brief: Delay using Systick per millisecond
- * param: int n: number of milliseconds to delay
- * return: void
- *************************************************************/
+
 void SysTick_delay(int n){
     int i;
     SysTick->LOAD=(3000-1);
