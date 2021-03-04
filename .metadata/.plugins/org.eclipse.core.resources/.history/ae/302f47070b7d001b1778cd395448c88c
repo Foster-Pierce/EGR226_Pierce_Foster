@@ -1,0 +1,2 @@
+#define stats_lib_H_INCLUDED
+float maximum(float nums[], int n);

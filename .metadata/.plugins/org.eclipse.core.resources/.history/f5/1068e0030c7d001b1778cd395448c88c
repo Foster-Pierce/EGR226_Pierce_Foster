@@ -1,0 +1,26 @@
+#include "LCD_preset.h"
+
+void LCD_init (void){
+
+}
+void delay_micro (int us){
+
+}
+void delay_ms (unsigned ms){
+
+}
+void PulseEnablePin (void){
+
+}
+void pushNibble (int nibble){
+
+}
+void pushByte (int byte){
+
+}
+void commandWrite (int command){
+
+}
+void dataWrite (int data){
+
+}

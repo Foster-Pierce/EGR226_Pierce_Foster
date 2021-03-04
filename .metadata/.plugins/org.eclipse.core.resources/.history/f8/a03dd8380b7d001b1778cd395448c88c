@@ -1,0 +1,9 @@
+#define LCD_setup_H_INCLUDED
+void LCD_init (void);
+void delay_micro (int us);
+void delay_ms (unsigned ms);
+void PulseEnablePin (void);
+void pushNibble (uint8_t nibble);
+void pushByte (uint8_t byte);
+void commandWrite (uint8_t command);
+void dataWrite (uint8_t data);
