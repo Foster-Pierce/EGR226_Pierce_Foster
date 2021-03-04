@@ -114,10 +114,7 @@ void Keypad_Print(int *arr, int t){
     else{
         printf("PIN: ");
         for(i=0;i<4;i++){
-            if(arr[i]==11)
-                printf("[0]");
-            else
-                printf("[%d]", arr[i]);
+            printf("[%d]", arr[i]);
         }
         printf("\nPlease Enter a 4-digit PIN\n");
     }
