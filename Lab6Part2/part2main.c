@@ -1,12 +1,14 @@
-/**************************************************************************************
+/****************************************************************************
  * Author: Pierce Foster
  * Course: EGR 226 - 905
  * Date: 03/05/2021
  * Project: Lab 6 Part 2
  * File: part2main.c
- * Description: This code makes the LED cycle through red, green, and blue while the button
- * is being pressed. This includes debouncing functions to ensure the inputs are correct.
- **************************************************************************************/
+ * Description: This program takes the input from a keypad and prints the last 4
+ * numbers pressed when the pound key is pressed. The star symbol does nothing,
+ * and the pound key is the enter button. This process can be repeated as many
+ * times as needed.
+ ****************************************************************************/
 #include "msp.h"
 #include <stdio.h>
 

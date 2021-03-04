@@ -1,31 +1,50 @@
-/****************************************************************************
+/**************************************************************************************
  * Author: Pierce Foster
  * Course: EGR 226 - 905
  * Date: 03/05/2021
- * Project: Lab 6 Part 1
- * File: part1main.c
- * Description: This program takes the input from a keypad and prints the keys
- * instantly to the console. Holding a key does not continuously print the key.
- ****************************************************************************/
+ * Project: Lab 6 Part 2
+ * File: part2main.c
+ * Description: This code makes the LED cycle through red, green, and blue while the button
+ * is being pressed. This includes debouncing functions to ensure the inputs are correct.
+ **************************************************************************************/
 #include "msp.h"
 #include <stdio.h>
 
 void Keypad_init(void);
 int Keypad_Read(void);
-void Keypad_Print(int num);
+void Keypad_Print(int *arr, int t);
 void SysTick_delay(int n);
 
 void main(void)
 {
-    WDT_A->CTL = WDT_A_CTL_PW | WDT_A_CTL_HOLD;		// stop watchdog timer
+    WDT_A->CTL = WDT_A_CTL_PW | WDT_A_CTL_HOLD;     // stop watchdog timer
     Keypad_init();
-    int pressed=0;
+    int t=0, pressed=0;           // t is the number of inputs, total 4 numbers
+    int arr[]={0,0,0,0};
+
+    printf("Please Enter a 4-digit PIN\n");
+
     while(1){
         pressed = Keypad_Read();
-        if(pressed>=1)
-            Keypad_Print(pressed);
+        if(pressed==12)
+            Keypad_Print(arr, t);
+
+        if((pressed!=10)&&(pressed!=12)&&(pressed!=0)){
+            if(t>=4){
+                arr[0]=arr[1];
+                arr[1]=arr[2];
+                arr[2]=arr[3];
+                arr[3]=pressed;
+            }
+            else {
+                arr[t]=pressed;
+                t++;
+            }
+        }
         SysTick_delay(10);
     }
+
+
 }
 /****| Keypad_init | *****************************************
  * Brief: Initializes all the ports and pins used
@@ -80,21 +99,29 @@ int Keypad_Read(void){
 
     return num;
 }
-/****| Keypad_Print | *****************************************
- * Brief: Prints the key pressed to the console
- * param: int: number code
- * return: void
- *************************************************************/
-void Keypad_Print(int num){
 
-    if((num<=9)&&(num>0))
-        printf("KEY: [%d]\n", num);
-    else if(num==10)
-        printf("KEY: [*]\n");
-    else if(num==11)
-        printf("KEY: [0]\n");
-    else if(num==12)
-        printf("KEY: [#]\n");
+/****| Keypad_Print | *****************************************
+ * Brief: Takes the number of button presses and the array of
+ * the last 4 keys pressed to determine what to print to the console
+ * param: int: number array , int: times pressed
+ * return: int; number code that was pressed
+ *************************************************************/
+void Keypad_Print(int *arr, int t){
+    int i;
+    if(t<4)
+        printf("ERROR: too few inputs detected.\n");
+
+    else{
+        printf("PIN: ");
+        for(i=0;i<4;i++){
+            if(arr[i]==11)
+                printf("[0]");
+            else
+                printf("[%d]", arr[i]);
+        }
+        printf("\nPlease Enter a 4-digit PIN\n");
+    }
+
 
 }
 /****| SysTick_delay | *****************************************

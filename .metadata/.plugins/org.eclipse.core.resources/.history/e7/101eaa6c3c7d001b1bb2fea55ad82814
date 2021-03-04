@@ -1,12 +1,12 @@
-/****************************************************************************
+/**************************************************************************************
  * Author: Pierce Foster
  * Course: EGR 226 - 905
  * Date: 03/05/2021
  * Project: Lab 6 Part 1
  * File: part1main.c
- * Description: This program takes the input from a keypad and prints the keys
- * instantly to the console. Holding a key does not continuously print the key.
- ****************************************************************************/
+ * Description: This code makes the LED cycle through red, green, and blue while the button
+ * is being pressed. This includes debouncing functions to ensure the inputs are correct.
+ **************************************************************************************/
 #include "msp.h"
 #include <stdio.h>
 
