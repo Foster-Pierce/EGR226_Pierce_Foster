@@ -2,10 +2,10 @@
 #include "msp.h"
 
 const char arr[4][6]={
-                     {0x50,0x49,0x45,0x52,0x43,0x45},
-                     {0x46,0x4F,0x53,0x54,0x45,0x52},
-                     {0x45,0x47,0x52,0x20,0x20,0x20},
-                     {0x32,0x32,0x36,0x20,0x20,0x20}
+{'P','I','E','R','C','E'},
+{'F','O','S','T','E','R'},
+{'E','G','R',' ', ' ', ' '},
+{'2','2','6',' ', ' ', ' '}
 };
 
 void LCD_init (void){
@@ -44,11 +44,11 @@ void LCD_init (void){
     Systick_ms_delay(10);
 }
 void PulseEnablePin (void){
-    P5OUT &=~BIT0;
+    P5OUT &=~BIT0;          //pulse low for 10us
     Systick_us_delay(10);
-    P5OUT |=BIT0;
+    P5OUT |=BIT0;           //pulse high for 10us
     Systick_us_delay(10);
-    P5OUT &=~BIT0;
+    P5OUT &=~BIT0;          //pulse low for 10us
     Systick_us_delay(10);
 }
 void pushNibble (int nibble){
@@ -57,7 +57,7 @@ void pushNibble (int nibble){
     PulseEnablePin();
 }
 void pushByte (int byte){
-    int nibble;
+    int nibble;                     //splitting the byte into 4 bit chunks
     nibble = (byte & 0xF0) >> 4;
     pushNibble(nibble);
     nibble = byte & 0x0F;
@@ -68,9 +68,9 @@ void write_command (int command){
     pushByte(command);
 }
 void write_data (int data){
-    P5OUT |= BIT2;
+    P5OUT |= BIT2;          //Sets RS
     pushByte(data);
-    P5OUT &= ~BIT2;
+    P5OUT &= ~BIT2;         //clears RS
 }
 void Systick_us_delay(int n){
     SysTick->LOAD=(n*3-1);

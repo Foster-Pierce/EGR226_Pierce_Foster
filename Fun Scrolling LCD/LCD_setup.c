@@ -1,7 +1,7 @@
 #include "LCD_preset.h"
 #include "msp.h"
-//laboratory over
-char arr[]={0x4C,0x41,0x42,0x4F,0x52,0x41,0x54,0x4F,0x52,0x59,0x20,0x4F,0x56,0x45,0x52,0x20};
+//sheesh ur cool
+char arr[]={'a','a','a','a','a','a','a','a','a','a','a','a','a','a','a','a'};
 
 void LCD_init (void){
     //initialize data pins P2.4 - 2.7
@@ -91,7 +91,7 @@ void PrintChar(void){
                 else
                     write_data(arr[i+j]);
         }
-        Systick_ms_delay(500);
+        Systick_ms_delay(750);
         write_command(0x80);
     }
 }

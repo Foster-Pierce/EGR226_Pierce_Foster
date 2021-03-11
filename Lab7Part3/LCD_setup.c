@@ -1,7 +1,7 @@
 #include "LCD_preset.h"
 #include "msp.h"
-//laboratory over
-char arr[]={0x4C,0x41,0x42,0x4F,0x52,0x41,0x54,0x4F,0x52,0x59,0x20,0x4F,0x56,0x45,0x52,0x20};
+
+char arr[]={'L','A','B','O','R','A','T','O','R','Y',' ','O','V','E','R'};
 
 void LCD_init (void){
     //initialize data pins P2.4 - 2.7
@@ -39,11 +39,11 @@ void LCD_init (void){
     Systick_ms_delay(10);
 }
 void PulseEnablePin (void){
-    P5OUT &=~BIT0;
+    P5OUT &=~BIT0;          //pulse low for 10us
     Systick_us_delay(10);
-    P5OUT |=BIT0;
+    P5OUT |=BIT0;           //pulse high for 10us
     Systick_us_delay(10);
-    P5OUT &=~BIT0;
+    P5OUT &=~BIT0;          //pulse low for 10us
     Systick_us_delay(10);
 }
 void pushNibble (int nibble){
@@ -52,7 +52,7 @@ void pushNibble (int nibble){
     PulseEnablePin();
 }
 void pushByte (int byte){
-    int nibble;
+    int nibble;                     //splitting the byte into 4 bit chunks
     nibble = (byte & 0xF0) >> 4;
     pushNibble(nibble);
     nibble = byte & 0x0F;
@@ -63,9 +63,9 @@ void write_command (int command){
     pushByte(command);
 }
 void write_data (int data){
-    P5OUT |= BIT2;
+    P5OUT |= BIT2;          //sets RS
     pushByte(data);
-    P5OUT &= ~BIT2;
+    P5OUT &= ~BIT2;         //clears RS
 }
 void Systick_us_delay(int n){
     SysTick->LOAD=(n*3-1);
@@ -83,15 +83,15 @@ void Systick_ms_delay(int n){
 }
 void PrintChar(void){
     int i,j;
-    write_command(6); //entry mode
-    for(j=0;j<16;j++){
-        for(i=0;i<16-j;i++){
+    write_command(6);               //entry mode
+    for(j=0;j<16;j++){              //shift number
+        for(i=0;i<16-j;i++){        //prints the array at shift number
             if (arr[i+j]==0)
                 write_data(0x20);
                 else
                     write_data(arr[i+j]);
         }
         Systick_ms_delay(500);
-        write_command(0x80);
+        write_command(0x80);        //returns to home position
     }
 }
