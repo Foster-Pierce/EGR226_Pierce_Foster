@@ -3,16 +3,11 @@
 
 "C:\\ti\\ccs930\\ccs\\utils\\bin\\gmake" -k -j 4 all -O 
  
-Building file: "../LCD_setup.c"
+Building file: "../main.c"
 Invoking: ARM Compiler
-"C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs930/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs930/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/pierce/Documents/GitHub/EGR226_Pierce_Foster/LCD_Preset" --include_path="C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="LCD_setup.d_raw"  "../LCD_setup.c"
-"../LCD_setup.c", line 5: warning #1238-D: excess initializers are ignored
-"../LCD_setup.c", line 6: warning #1238-D: excess initializers are ignored
-"../LCD_setup.c", line 7: warning #1238-D: excess initializers are ignored
-"../LCD_setup.c", line 8: warning #1238-D: excess initializers are ignored
-"../LCD_setup.c", line 79: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
-"../LCD_setup.c", line 86: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
-Finished building: "../LCD_setup.c"
+"C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs930/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs930/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/pierce/Documents/GitHub/EGR226_Pierce_Foster/LCD_Preset" --include_path="C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="main.d_raw"  "../main.c"
+"../main.c", line 17: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+Finished building: "../main.c"
  
 Building target: "LCD_Preset.out"
 Invoking: ARM Linker

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;LCD_Preset&apos; to &apos;Lab7Part2&apos;" description="Rename resource &apos;LCD_Preset&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/LCD_Preset" name="Lab7Part2" stamp="1615422874294" updateReferences="true"/>
+</session>

@@ -1,0 +1,24 @@
+#include "msp.h"
+#include "LCD_preset.h"
+
+void main(void)
+{
+    WDT_A->CTL = WDT_A_CTL_PW | WDT_A_CTL_HOLD;		// stop watchdog timer
+
+    LCD_init();
+    PrintChar(0);
+    write_command(0x91);
+//    PrintChar(1);
+//    write_command(0x90);
+//    PrintChar(2);
+//    write_command(0x06);
+//    PrintChar(3);
+//    write_command(0x06);
+    while(1){
+        ;
+    }
+}
+
+
+
+  //  write_data(0x20); //space
