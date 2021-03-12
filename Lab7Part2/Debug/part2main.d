@@ -1,6 +1,7 @@
 # FIXED
 
 part2main.obj: ../part2main.c
+part2main.obj: C:/Users/pierce/Documents/GitHub/EGR226_Pierce_Foster/Lab7Part2/LCD_preset_part2.h
 part2main.obj: C:/ti/ccs930/ccs/ccs_base/arm/include/msp.h
 part2main.obj: C:/ti/ccs930/ccs/ccs_base/arm/include/msp432p401r.h
 part2main.obj: C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stdint.h
@@ -17,9 +18,9 @@ part2main.obj: C:/ti/ccs930/ccs/ccs_base/arm/include/CMSIS/core_cm4.h
 part2main.obj: C:/ti/ccs930/ccs/ccs_base/arm/include/CMSIS/cmsis_compiler.h
 part2main.obj: C:/ti/ccs930/ccs/ccs_base/arm/include/CMSIS/cmsis_ccs.h
 part2main.obj: C:/ti/ccs930/ccs/ccs_base/arm/include/system_msp432p401r.h
-part2main.obj: ../LCD_preset.h
 
 ../part2main.c: 
+C:/Users/pierce/Documents/GitHub/EGR226_Pierce_Foster/Lab7Part2/LCD_preset_part2.h: 
 C:/ti/ccs930/ccs/ccs_base/arm/include/msp.h: 
 C:/ti/ccs930/ccs/ccs_base/arm/include/msp432p401r.h: 
 C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stdint.h: 
@@ -36,4 +37,3 @@ C:/ti/ccs930/ccs/ccs_base/arm/include/CMSIS/core_cm4.h:
 C:/ti/ccs930/ccs/ccs_base/arm/include/CMSIS/cmsis_compiler.h: 
 C:/ti/ccs930/ccs/ccs_base/arm/include/CMSIS/cmsis_ccs.h: 
 C:/ti/ccs930/ccs/ccs_base/arm/include/system_msp432p401r.h: 
-../LCD_preset.h: 

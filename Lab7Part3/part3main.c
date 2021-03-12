@@ -8,8 +8,8 @@
  * and continuously scrolls left one character per .75s until all characters
  * are off the screen, and repeats this forever.
  ****************************************************************************/
+#include <LCD_preset_part3.h>
 #include "msp.h"
-#include "LCD_preset.h"
 
 void main(void)
 {

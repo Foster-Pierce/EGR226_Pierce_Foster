@@ -9,8 +9,8 @@
  * line is the class name, and the last line is the class number. This
  * information stays on the screen with no other effects.
  ****************************************************************************/
+#include <LCD_preset_part2.h>
 #include "msp.h"
-#include "LCD_preset.h"
 
 void main(void)
 {

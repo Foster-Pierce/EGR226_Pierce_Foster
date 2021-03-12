@@ -1,7 +1,7 @@
 ******************************************************************************
                   TI ARM Linker PC v18.12.4                    
 ******************************************************************************
->> Linked Wed Mar 10 21:28:48 2021
+>> Linked Fri Mar 12 13:31:14 2021
 
 OUTPUT FILE NAME:   <Lab7Part2.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 000007e9
@@ -42,7 +42,7 @@ section   page    origin      length       input sections
 
 .text      0    000000e4    0000075c     
                   000000e4    00000334     system_msp432p401r.obj (.text)
-                  00000418    0000023c     LCD_setup.obj (.text)
+                  00000418    0000023c     LCD_setup_part2.obj (.text)
                   00000654    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
                   000006f0    00000068                                   : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
                   00000758    0000004c     part2main.obj (.text)
@@ -54,7 +54,7 @@ section   page    origin      length       input sections
                   0000083c    00000004                                   : exit.c.obj (.text:abort:abort)
 
 .const     0    00000840    00000018     
-                  00000840    00000018     LCD_setup.obj (.const:arr)
+                  00000840    00000018     LCD_setup_part2.obj (.const:arr)
 
 .cinit     0    00000858    00000018     
                   00000858    00000008     (.cinit..data.load) [load image, compression = lzss]
@@ -79,7 +79,7 @@ MODULE SUMMARY
        ------                        ----   -------   -------
     .\
        system_msp432p401r.obj        820    0         8      
-       LCD_setup.obj                 572    24        0      
+       LCD_setup_part2.obj           572    24        0      
        startup_msp432p401r_ccs.obj   14     228       0      
        part2main.obj                 76     0         0      
     +--+-----------------------------+------+---------+---------+
