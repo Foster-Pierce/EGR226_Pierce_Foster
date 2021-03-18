@@ -6018,3 +6018,7 @@ file there for instructions.
 !ENTRY com.ti.ccstudio.debug 1 0 2021-03-18 16:26:03.267
 !MESSAGE DS_ERROR: CORTEX_M4_0: Breakpoint Manager: Remove job failed: Register/memory write failure[22005]
 
+
+!ENTRY com.ti.ccstudio.debug 1 0 2021-03-18 17:50:47.398
+!MESSAGE DS_ERROR: CORTEX_M4_0: JTAG Communication Error: (Error -261 @ 0x0) Invalid response was received from the XDS110. (Emulation package 9.3.0.00042) 
+
