@@ -2,13 +2,10 @@
 #include "msp.h"
 
 void Setup_Init(void){
-
-        //P1.6 init
-        P1SEL1 = 0x00;
-        P1SEL0 = 0x00;
-        P1DIR |= BIT6;
-  //      P3REN &= ~BIT6;
-    //    P3OUT &= ~BIT6;
+    //P1.6 init
+    P1SEL1 = 0x00;
+    P1SEL0 = 0x00;
+    P1DIR |= BIT6;
 }
 void Systick_ms_delay(int n){
     SysTick->CTRL=0;
@@ -18,16 +15,18 @@ void Systick_ms_delay(int n){
     while((SysTick->CTRL & BIT(16))==0);
 }
 void Systick_DutyCycle(double n){
-    double p = 25, Ton, Toff;
-    //n = on/off, run at 40Hz by default
+    int p = 25;
+    int Ton, Toff;
+
     Ton = n*p;
     Toff = p-Ton;
     Systick_ms_delay(Ton);
     P1OUT &= ~BIT6;
-    Systick_ms_delay(Toff);
+    if(Toff!=0)
+        Systick_ms_delay(Toff);
+    else{}
 }
-void Systick_MotorSpeed(void){
-    double x=1;
+void Systick_MotorSpeed(double x){
     P1OUT |= BIT6;
-    Systick_DutyCycle(x);       //enter number between 0 and 1
+    Systick_DutyCycle(x);
 }
