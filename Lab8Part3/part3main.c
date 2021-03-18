@@ -5,6 +5,7 @@ void main(void)
 	WDT_A->CTL = WDT_A_CTL_PW | WDT_A_CTL_HOLD;		// stop watchdog timer
 	int press;
 	double DC=0;
+	Keypad_init();
 	while(1){
 	        press = Keypad_Read();
 	        DC=Press_Convert(press);

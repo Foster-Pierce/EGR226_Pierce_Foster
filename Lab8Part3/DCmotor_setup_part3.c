@@ -76,14 +76,13 @@ void SysTick_ms_delay(int n){
 
 }
 
-int Press_Convert(int n){
-    int DC;
+double Press_Convert(int n){
     if((n<=9)&&(n>0)){
-        DC=n/10;
+     double DC=(double)n/10;
         return DC;
     }
     else if(n==10)
-        return n;
+        return 1;
     else if(n==11)
         return 0;
     else if(n==12)

@@ -11,6 +11,8 @@ Invoking: ARM Compiler
 "../DCmotor_setup_part3.c", line 72: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
 "../DCmotor_setup_part3.c", line 16 (col. 6): remark #1531-D: (ULP 5.2) Detected floating point operation(s). Recommend moving them to RAM during run time or not using as these are processing/power intensive
 "../DCmotor_setup_part3.c", line 17 (col. 14): remark #1531-D: (ULP 5.2) Detected floating point operation(s). Recommend moving them to RAM during run time or not using as these are processing/power intensive
+"../DCmotor_setup_part3.c", line 79 (col. 8): remark #1531-D: (ULP 5.2) Detected floating point operation(s). Recommend moving them to RAM during run time or not using as these are processing/power intensive
+"../DCmotor_setup_part3.c", line 81 (col. 25): remark #1531-D: (ULP 5.2) Detected floating point operation(s). Recommend moving them to RAM during run time or not using as these are processing/power intensive
 Finished building: "../DCmotor_setup_part3.c"
  
 Building target: "Lab8Part3.out"
