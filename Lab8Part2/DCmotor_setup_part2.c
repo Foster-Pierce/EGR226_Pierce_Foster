@@ -3,8 +3,8 @@
 
 void Setup_Init(int duty){
     //Configuring P6.7 for PWM Output
-    P6SEL1 |= BIT7;
-    P6SEL0 &= ~BIT7;
+    P6SEL0 |= BIT7;
+    P6SEL1 &= ~BIT7;
     P6DIR |= BIT7;
 
     //TimerA setup for PWM with variable duty cycle

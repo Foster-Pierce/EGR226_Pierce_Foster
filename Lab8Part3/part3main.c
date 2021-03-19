@@ -7,8 +7,8 @@ void main(void)
 	double DC=0;
 	Keypad_init();
 	while(1){
-	        press = Keypad_Read();
-	        DC=Press_Convert(press);
+	        press = Keypad_Read();      //assign key press to variable
+	        DC=Press_Convert(press);    //convert key press to duty cycle number
 	        if(press>=1)
 	            MotorSpeed(DC);
 	        SysTick_ms_delay(10);

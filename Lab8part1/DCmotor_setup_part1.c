@@ -15,11 +15,11 @@ void Systick_ms_delay(int n){
     while((SysTick->CTRL & BIT(16))==0);
 }
 void Systick_DutyCycle(double n){
-    int p = 25;
+    int p = 25;     //period
     int Ton, Toff;
 
-    Ton = n*p;
-    Toff = p-Ton;
+    Ton = n*p;      //time on
+    Toff = p-Ton;   //time off
     P3OUT |= BIT0;
     if(Ton!=0)
         Systick_ms_delay(Ton);
