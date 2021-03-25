@@ -1,9 +1,0 @@
-#define LCD_setup_H_INCLUDED
-
-void TimerA_init (void);
-void TimerA_setPeriod (int n);
-void TimerA_setDuty (int n);
-void TimerA_setMotorSpeed (int n);
-void TimerA_stopMotor (void);
-
-

@@ -68,7 +68,7 @@ void PORT4_IRQHandler (void){   // port 4 service routine (buttons)
 }
 
 void CaseManager (int n){
-    // cases for each possible displayed number
+
     switch(n) {
     case 0 :
         P2OUT=0;

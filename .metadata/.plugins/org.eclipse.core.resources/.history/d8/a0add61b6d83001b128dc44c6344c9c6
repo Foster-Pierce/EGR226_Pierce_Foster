@@ -1,4 +1,0 @@
-#define LCD_setup_H_INCLUDED
-
-void Systick_DutyCycle(int n);
-void Systick_MotorSpeed(int n);

@@ -52,21 +52,21 @@ void PORT4_IRQHandler (void){   // port 4 service routine
             DC += .1;
         else
             DC=1;
-        MotorSpeed(DC);         // change motor speed
-        P4IFG &= ~BIT3;         // turn off flag
+        MotorSpeed(DC);         // do something
+        P4IFG &= ~BIT3;         //turn off flag
     }
     else if (P4IFG & BIT1){      // check if blue had interrupt
         if ((DC>0) & (DC<1))
             DC -= .1;
         else
             DC=0;
-        MotorSpeed(DC);
-        P4IFG &= ~BIT1;
+        MotorSpeed(DC);         // do something
+        P4IFG &= ~BIT1;         //turn off flag
     }
     else if (P4IFG & BIT2){      // check if red had interrupt
         DC = 0;
-        MotorSpeed(DC);
-        P4IFG &= ~BIT2;
+        MotorSpeed(DC);         // do something
+        P4IFG &= ~BIT2;         //turn off flag
     }
     else
         P4IFG=0;
