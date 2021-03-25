@@ -1,0 +1,8 @@
+#ifndef TimerLib_H_INCLUDED
+#define TimerLib_H_INCLUDED
+
+void Setup_Init(void);
+void SysTick_ms_delay(int n);
+void SysTick_Handler (void);
+
+#endif
