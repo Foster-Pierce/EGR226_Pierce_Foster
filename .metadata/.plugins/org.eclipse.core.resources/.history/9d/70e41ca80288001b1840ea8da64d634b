@@ -1,9 +1,0 @@
-#include <TimerLib_part3.h>
-#include "msp.h"
-void main(void)
-{
-	WDT_A->CTL = WDT_A_CTL_PW | WDT_A_CTL_HOLD;		// stop watchdog timer
-
-	MotorSpeed(0.5);
-	while(1){}
-}

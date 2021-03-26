@@ -1,0 +1,13 @@
+#include "msp.h"
+#include <LCD_preset_part2.h>
+
+void main(void)
+{
+    WDT_A->CTL = WDT_A_CTL_PW | WDT_A_CTL_HOLD;		// stop watchdog timer
+    LCD_init();
+    adcsetup();
+    SysTick_Init_interrupt();
+    __enable_interrupt();
+    while(1){
+    }
+}
