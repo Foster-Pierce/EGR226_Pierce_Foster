@@ -2,6 +2,9 @@
 #include<stdio.h>
 
 void SysTick_Init_interrupt(void);
+double convertV(double x);
+double convertT(double x);
+double convertT2(double x);
 void adcsetup(void);
 void delay_ms(int n);
 void main(void)
@@ -14,6 +17,24 @@ void main(void)
 
     while(1){
     }
+}
+
+double convertV(double x){
+    double voltage;
+    voltage = x*0.0002;
+    return voltage;
+}
+
+double convertT(double x){
+    double temp;
+    temp = (x*1000-500)/10;
+    return temp;
+}
+
+double convertT2(double x){
+    double temp;
+    temp = x*1.8+32;
+    return temp;
 }
 
 void adcsetup(void)
@@ -35,15 +56,15 @@ void SysTick_Init_interrupt(void){
 }
 
 void SysTick_Handler (void) {
-    double x, Celsius, volt, Fahren;
+    double x =0, Celsius=0, volt=0, Fahren=0;
 
     ADC14->CTL0 |=1;
     while(!ADC14->IFGR0);
 
     x = ADC14->MEM[5];
-    volt = x*0.0002;
-    Celsius = (volt*1000-500)/10;
-    Fahren = Celsius*1.8+32;
+    volt = convertV(x);
+    Celsius = convertT(volt);
+    Fahren = convertT2(Celsius);
 
     printf("Temperature in Celcius:\t%f\n", Celsius);
     printf("Temperature in Fahrenheit:\t%f\n", Fahren);

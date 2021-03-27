@@ -23,7 +23,7 @@ void main(void)
             volt = x*0.0002;
             Celsius = (volt*1000-500)/10;
 
-            printf("Temperature in Celsius:\t%.1f\n", Celsius);
+            printf("Temperature in Celcius:\t%.1f\n", Celsius);
 
             write_command(0xC7);
             UpdateTemp(Celsius);

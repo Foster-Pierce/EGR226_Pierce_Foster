@@ -8,6 +8,8 @@ org.eclipse.launchbar.core.descriptorType.default\:Fun\ Scrolling\ LCD/activeLau
 org.eclipse.launchbar.core.descriptorType.default\:LCD_Preset/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:LCD_Preset/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:Lab10Part1/activeLaunchMode=debug
+org.eclipse.launchbar.core.descriptorType.default\:Lab10Part2/activeLaunchMode=debug
+org.eclipse.launchbar.core.descriptorType.default\:Lab10Part3/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:Lab3Part2/activeLaunchMode=debug
 org.eclipse.launchbar.core.descriptorType.default\:Lab3Part2/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
 org.eclipse.launchbar.core.descriptorType.default\:Lab4Part2/activeLaunchMode=debug

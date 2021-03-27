@@ -35,7 +35,7 @@ void SysTick_Init_interrupt(void){
 }
 
 void SysTick_Handler (void) {
-    double x, Celsius, volt, Fahren;
+    double x =0, Celsius=0, volt=0, Fahren=0;
 
     ADC14->CTL0 |=1;
     while(!ADC14->IFGR0);
