@@ -65,20 +65,7 @@ void write_data (int data){
     pushByte(data);
     P5OUT &= ~BIT2;         //clears RS
 }
-void Systick_us_delay(int n){
-    SysTick->LOAD=(n*3-1);
-    SysTick->VAL=0;
-    SysTick->CTRL=0x5;
-    while((SysTick->CTRL & BIT(16))==0);
-    SysTick->CTRL=0;
-}
-void Systick_ms_delay(int n){
-    SysTick->LOAD=(n*3000-1);
-    SysTick->VAL=0;
-    SysTick->CTRL=0x5;
-    while((SysTick->CTRL & BIT(16))==0);
-    SysTick->CTRL=0;
-}
+
 
 void adcsetup(void)
 {
@@ -90,17 +77,6 @@ void adcsetup(void)
     P5SEL0 |= 0x20;
     ADC14->CTL1 |= 0x00050000; //start converting at mem reg 5
     ADC14->CTL0 |= 2; //enable ADC after configuration
-}
-void SysTick_Init_interrupt(void){
-    SysTick->CTRL=0;
-    SysTick->LOAD=(1500000-1);      //second delay between displaying numbers
-    SysTick->VAL=0;
-    SysTick->CTRL=0x07;
-}
-
-void SysTick_Handler (void) {
-    getflag(1);
-    getflag(0);
 }
 
 void PrintChar(void){
@@ -119,13 +95,9 @@ void UpdateTemp(double t){
 
     write_command(6); //entry mode
     for(i=0;i<4;i++)
-        write_data(Temp[i]);
-
-}
-int getflag(int n){
-    if(n==0)
-        return 0;
-    else
-    return 1;
+        if(Temp[3]==0)
+            write_data(0x20);
+        else
+            write_data(Temp[i]);
 
 }

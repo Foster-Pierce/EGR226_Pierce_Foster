@@ -1,7 +1,7 @@
 ******************************************************************************
                   TI ARM Linker PC v18.12.7                    
 ******************************************************************************
->> Linked Fri Mar 26 18:27:13 2021
+>> Linked Thu Apr  1 15:03:16 2021
 
 OUTPUT FILE NAME:   <Lab10Part3.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00003055
@@ -13,8 +13,8 @@ MEMORY CONFIGURATION
 ----------------------  --------  ---------  --------  --------  ----  --------
   MAIN                  00000000   00040000  000034a0  0003cb60  R  X
   INFO                  00200000   00004000  00000000  00004000  R  X
-  SRAM_CODE             01000000   00010000  000009b4  0000f64c  RW X
-  SRAM_DATA             20000000   00010000  000009b4  0000f64c  RW  
+  SRAM_CODE             01000000   00010000  000009b8  0000f648  RW X
+  SRAM_DATA             20000000   00010000  000009b8  0000f648  RW  
 
 
 SEGMENT ALLOCATION MAP
@@ -26,10 +26,10 @@ run origin  load origin   length   init length attrs members
   000000e4    000000e4    0000321c   0000321c    r-x .text
   00003300    00003300    00000108   00000108    r-- .const
   00003408    00003408    00000098   00000098    r-- .cinit
-20000000    20000000    000007b4   00000000    rw-
+20000000    20000000    000007b8   00000000    rw-
   20000000    20000000    00000400   00000000    rw- .sysmem
-  20000400    20000400    000001ec   00000000    rw- .data
-  200005ec    200005ec    000001c8   00000000    rw- .bss
+  20000400    20000400    000001f0   00000000    rw- .data
+  200005f0    200005f0    000001c8   00000000    rw- .bss
 2000fe00    2000fe00    00000200   00000000    rw-
   2000fe00    2000fe00    00000200   00000000    rw- .stack
 
@@ -46,16 +46,16 @@ section   page    origin      length       input sections
                   000000e4    00000a4e     rtsv7M4_T_le_v4SPD16_eabi.lib : _printfi.c.obj (.text:__TI_printfi)
                   00000b32    00000002                                   : _lock.c.obj (.text:_nop)
                   00000b34    00000334     system_msp432p401r.obj (.text)
-                  00000e68    00000324     FuncsPart3.obj (.text)
-                  0000118c    00000270     rtsv7M4_T_le_v4SPD16_eabi.lib : _printfi.c.obj (.text:_pconv_a)
-                  000013fc    000001d0                                   : _printfi.c.obj (.text:_pconv_g)
-                  000015cc    000001b6                                   : fd_add_t2.asm.obj (.text)
-                  00001782    00000002                                   : div0.asm.obj (.text)
-                  00001784    0000013c                                   : _printfi.c.obj (.text:_pconv_e)
-                  000018c0    00000136                                   : fd_div_t2.asm.obj (.text)
-                  000019f6    00000002     --HOLE-- [fill = 0]
-                  000019f8    0000012c     main.obj (.text)
-                  00001b24    00000124     rtsv7M4_T_le_v4SPD16_eabi.lib : _printfi.c.obj (.text:fcvt)
+                  00000e68    00000298     FuncsPart3.obj (.text)
+                  00001100    00000270     rtsv7M4_T_le_v4SPD16_eabi.lib : _printfi.c.obj (.text:_pconv_a)
+                  00001370    000001d0                                   : _printfi.c.obj (.text:_pconv_g)
+                  00001540    000001b8     main.obj (.text)
+                  000016f8    000001b6     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_add_t2.asm.obj (.text)
+                  000018ae    00000002                                   : div0.asm.obj (.text)
+                  000018b0    0000013c                                   : _printfi.c.obj (.text:_pconv_e)
+                  000019ec    00000136                                   : fd_div_t2.asm.obj (.text)
+                  00001b22    00000002     --HOLE-- [fill = 0]
+                  00001b24    00000124                                   : _printfi.c.obj (.text:fcvt)
                   00001c48    00000118                                   : memory.c.obj (.text:aligned_alloc)
                   00001d60    00000114                                   : fputs.c.obj (.text:fputs)
                   00001e74    00000110                                   : s_scalbn.c.obj (.text:scalbn)
@@ -157,7 +157,7 @@ section   page    origin      length       input sections
                   20000000    00000010     rtsv7M4_T_le_v4SPD16_eabi.lib : memory.c.obj (.sysmem)
                   20000010    000003f0     --HOLE--
 
-.data      0    20000400    000001ec     UNINITIALIZED
+.data      0    20000400    000001f0     UNINITIALIZED
                   20000400    000000f0     rtsv7M4_T_le_v4SPD16_eabi.lib : defs.c.obj (.data:_ftable)
                   200004f0    00000078                                   : host_device.c.obj (.data:_device)
                   20000568    00000050                                   : host_device.c.obj (.data:_stream)
@@ -165,13 +165,14 @@ section   page    origin      length       input sections
                   200005c8    0000000c                                   : exit.c.obj (.data:$O1$$)
                   200005d4    00000008                                   : _lock.c.obj (.data:$O1$$)
                   200005dc    00000008                                   : memory.c.obj (.data:$O1$$)
-                  200005e4    00000004                                   : errno.c.obj (.data)
-                  200005e8    00000004     system_msp432p401r.obj (.data)
+                  200005e4    00000004     main.obj (.data)
+                  200005e8    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : errno.c.obj (.data)
+                  200005ec    00000004     system_msp432p401r.obj (.data)
 
-.bss       0    200005ec    000001c8     UNINITIALIZED
-                  200005ec    00000120     rtsv7M4_T_le_v4SPD16_eabi.lib : trgmsg.c.obj (.bss:_CIOBUF_)
-                  2000070c    000000a0     (.common:__TI_tmpnams)
-                  200007ac    00000008     (.common:parmbuf)
+.bss       0    200005f0    000001c8     UNINITIALIZED
+                  200005f0    00000120     rtsv7M4_T_le_v4SPD16_eabi.lib : trgmsg.c.obj (.bss:_CIOBUF_)
+                  20000710    000000a0     (.common:__TI_tmpnams)
+                  200007b0    00000008     (.common:parmbuf)
 
 .stack     0    2000fe00    00000200     UNINITIALIZED
                   2000fe00    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
@@ -183,11 +184,11 @@ MODULE SUMMARY
        ------                        ----    -------   -------
     .\
        system_msp432p401r.obj        820     0         8      
-       FuncsPart3.obj                804     7         0      
-       main.obj                      300     0         0      
+       FuncsPart3.obj                664     7         0      
+       main.obj                      440     0         8      
        startup_msp432p401r_ccs.obj   14      228       0      
     +--+-----------------------------+-------+---------+---------+
-       Total:                        1938    235       8      
+       Total:                        1938    235       16     
                                                               
     C:\ti\ccs930\ccs\tools\compiler\ti-cgt-arm_18.12.7.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
        _printfi.c.obj                4851    0         0      
@@ -258,14 +259,14 @@ MODULE SUMMARY
        Stack:                        0       0         1024   
        Linker Generated:             0       146       0      
     +--+-----------------------------+-------+---------+---------+
-       Grand Total:                  12813   638       4968   
+       Grand Total:                  12813   638       4976   
 
 
 LINKER GENERATED COPY TABLES
 
 __TI_cinit_table @ 00003490 records: 2, size/record: 8, table size: 16
-	.data: load addr=00003408, load size=0000006e bytes, run addr=20000400, run size=000001ec bytes, compression=lzss
-	.bss: load addr=00003488, load size=00000008 bytes, run addr=200005ec, run size=000001c8 bytes, compression=zero_init
+	.data: load addr=00003408, load size=0000006e bytes, run addr=20000400, run size=000001f0 bytes, compression=lzss
+	.bss: load addr=00003488, load size=00000008 bytes, run addr=200005f0, run size=000001c8 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
@@ -325,19 +326,19 @@ address   name
 000032d5  PORT6_IRQHandler               
 000032d5  PSS_IRQHandler                 
 000032d5  PendSV_Handler                 
-000010a7  PrintChar                      
+0000101b  PrintChar                      
 00000f27  PulseEnablePin                 
 000032d5  RTC_C_IRQHandler               
 000032c9  Reset_Handler                  
 000032d5  SVC_Handler                    
-00001097  SysTick_Handler                
-00001097  SysTick_Handler                
-0000107d  SysTick_Init_interrupt         
-200005e8  SystemCoreClock                
+00001621  SysTick_Handler                
+00001621  SysTick_Handler                
+00001607  SysTick_Init_interrupt         
+200005ec  SystemCoreClock                
 00000b35  SystemCoreClockUpdate          
 00000dad  SystemInit                     
-00001005  Systick_ms_delay               
-00000fd5  Systick_us_delay               
+00001659  Systick_ms_delay               
+00001629  Systick_us_delay               
 000032d5  T32_INT1_IRQHandler            
 000032d5  T32_INT2_IRQHandler            
 000032d5  T32_INTC_IRQHandler            
@@ -349,11 +350,11 @@ address   name
 000032d5  TA2_N_IRQHandler               
 000032d5  TA3_0_IRQHandler               
 000032d5  TA3_N_IRQHandler               
-000010e1  UpdateTemp                     
+00001055  UpdateTemp                     
 000032d5  UsageFault_Handler             
 4000480c  WDTCTL_SYM                     
 000032d5  WDT_A_IRQHandler               
-200005ec  __CIOBUF_                      
+200005f0  __CIOBUF_                      
 20010000  __STACK_END                    
 00000200  __STACK_SIZE                   
 00000400  __SYSMEM_SIZE                  
@@ -377,7 +378,7 @@ ffffffff  __TI_prof_data_size
 ffffffff  __TI_prof_data_start           
 00003021  __TI_readmsg                   
 00000000  __TI_static_base__             
-2000070c  __TI_tmpnams                   
+20000710  __TI_tmpnams                   
 00002f7d  __TI_writemsg                  
 000029f9  __TI_wrt_ok                    
 000031cd  __TI_zero_init_nomemset        
@@ -385,14 +386,14 @@ ffffffff  __TI_prof_data_start
 000024b1  __aeabi_cdcmple                
 00002537  __aeabi_cdrcmple               
 00002da5  __aeabi_d2iz                   
-000015d7  __aeabi_dadd                   
-000018c1  __aeabi_ddiv                   
+00001703  __aeabi_dadd                   
+000019ed  __aeabi_ddiv                   
 00001f85  __aeabi_dmul                   
-000015cd  __aeabi_dsub                   
+000016f9  __aeabi_dsub                   
 000032e1  __aeabi_errno_addr             
 000030b9  __aeabi_i2d                    
-00001783  __aeabi_idiv0                  
-00001783  __aeabi_ldiv0                  
+000018af  __aeabi_idiv0                  
+000018af  __aeabi_ldiv0                  
 000025bd  __aeabi_memclr                 
 000025bd  __aeabi_memclr4                
 000025bd  __aeabi_memclr8                
@@ -423,16 +424,17 @@ UNDEFED   _system_post_cinit
 000032f9  _system_pre_init               
 200005d8  _unlock                        
 000032fd  abort                          
-00001037  adcsetup                       
+00000fd5  adcsetup                       
 00001c49  aligned_alloc                  
 00002d11  atoi                           
 ffffffff  binit                          
 00002abd  close                          
 00003221  copysign                       
 00003221  copysignl                      
-200005e4  errno                          
+200005e8  errno                          
 00002d5d  exit                           
 00003089  finddevice                     
+200005e4  flag                           
 00002425  fputc                          
 00001d61  fputs                          
 00002081  free                           
@@ -440,20 +442,20 @@ ffffffff  binit
 00002931  frexpl                         
 00002995  fseek                          
 00002eb9  getdevice                      
-00001125  getflag                        
+000010a7  getflag                        
 00000000  interruptVectors               
 00001e75  ldexp                          
 00001e75  ldexpl                         
 0000313d  lseek                          
 00002c1f  ltoa                           
-000019f9  main                           
+00001541  main                           
 000032e9  malloc                         
 00001c49  memalign                       
 00003205  memccpy                        
 0000318d  memchr                         
 000022f3  memcpy                         
 000025c5  memset                         
-200007ac  parmbuf                        
+200007b0  parmbuf                        
 000028c9  printf                         
 00000f7f  pushByte                       
 00000f5b  pushNibble                     
@@ -493,21 +495,21 @@ address   name
 00000f7f  pushByte                       
 00000fa9  write_command                  
 00000fb5  write_data                     
-00000fd5  Systick_us_delay               
-00001005  Systick_ms_delay               
-00001037  adcsetup                       
-0000107d  SysTick_Init_interrupt         
-00001097  SysTick_Handler                
-00001097  SysTick_Handler                
-000010a7  PrintChar                      
-000010e1  UpdateTemp                     
-00001125  getflag                        
-000015cd  __aeabi_dsub                   
-000015d7  __aeabi_dadd                   
-00001783  __aeabi_idiv0                  
-00001783  __aeabi_ldiv0                  
-000018c1  __aeabi_ddiv                   
-000019f9  main                           
+00000fd5  adcsetup                       
+0000101b  PrintChar                      
+00001055  UpdateTemp                     
+000010a7  getflag                        
+00001541  main                           
+00001607  SysTick_Init_interrupt         
+00001621  SysTick_Handler                
+00001621  SysTick_Handler                
+00001629  Systick_us_delay               
+00001659  Systick_ms_delay               
+000016f9  __aeabi_dsub                   
+00001703  __aeabi_dadd                   
+000018af  __aeabi_idiv0                  
+000018af  __aeabi_ldiv0                  
+000019ed  __aeabi_ddiv                   
 00001c49  aligned_alloc                  
 00001c49  memalign                       
 00001d61  fputs                          
@@ -656,11 +658,12 @@ address   name
 200005d0  __TI_enable_exit_profile_output
 200005d4  _lock                          
 200005d8  _unlock                        
-200005e4  errno                          
-200005e8  SystemCoreClock                
-200005ec  __CIOBUF_                      
-2000070c  __TI_tmpnams                   
-200007ac  parmbuf                        
+200005e4  flag                           
+200005e8  errno                          
+200005ec  SystemCoreClock                
+200005f0  __CIOBUF_                      
+20000710  __TI_tmpnams                   
+200007b0  parmbuf                        
 2000fe00  __stack                        
 20010000  __STACK_END                    
 4000480c  WDTCTL_SYM                     
@@ -673,4 +676,4 @@ ffffffff  binit
 UNDEFED   __mpu_init                     
 UNDEFED   _system_post_cinit             
 
-[193 symbols]
+[194 symbols]

@@ -56,13 +56,29 @@ void Systick_ms_delay(int n);
  * return: void
  *************************************************************/
 void Systick_us_delay(int n);
+/****| SysTick_Init_interrupt | *****************************************
+ * Brief: Initializes SysTick to delay for a half second then interrupt
+ * param: void
+ * return: void
+ *************************************************************/
+void SysTick_Init_interrupt(void);
+/****| adcsetup | *****************************************
+ * Brief: Sets up the ADC for 14-bit resolution and stores
+ * information at memory location 5.
+ * param: void
+ * return: void
+ *************************************************************/
+void adcsetup(void);
 /****| PrintChar | *****************************************
  * Brief: Prints the desired line of characters to the LCD
  * param: int: number of the row needed to be printed
  * return: void
  *************************************************************/
-void SysTick_Init_interrupt(void);
-void adcsetup(void);
 void PrintChar(void);
+/****| UpdateTemp | *****************************************
+ * Brief: Updates the temperature, in celsius, on the LCD
+ * param: double; t, the temperature that is converted from
+ * the TMP36
+ * return: void
+ *************************************************************/
 void UpdateTemp(double t);
-int getflag(int n);
