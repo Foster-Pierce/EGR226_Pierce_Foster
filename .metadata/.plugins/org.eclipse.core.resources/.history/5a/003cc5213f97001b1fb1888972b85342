@@ -1,0 +1,82 @@
+#include "msp.h"
+#include "stdio.h"
+
+volatile int edge0, edge1, period, flag10, flag0;
+void blockage(void);
+void setup_init(void);
+void main(void)
+{
+    WDT_A->CTL = WDT_A_CTL_PW | WDT_A_CTL_HOLD;		// stop watchdog timer
+
+    setup_init();
+    NVIC_EnableIRQ(TA0_N_IRQn);
+    NVIC_EnableIRQ(TA1_N_IRQn);
+    __enable_interrupt();
+
+    while(1){
+        if(flag10){
+            P2OUT |= BIT0;
+            flag10=0;
+        }
+        blockage();
+        else if(flag0){
+            P2OUT &=~ BIT0;
+            flag0=0;
+        }
+    }
+}
+
+void TA0_N_IRQHandler(void){
+
+    if(TIMER_A0->CCTL[1]&BIT0){
+        edge1 = TIMER_A0->CCR[1];
+        period = edge1 - edge0;
+        edge0 = edge1;
+        if ((32000<period) && (period<43000)){
+            flag10=1;
+            TIMER_A0->CCTL[1] &=~ (BIT0 | BIT1);
+        }
+    }
+}
+
+void setup_init(void){
+    //Configuring P6.7 for PWM Output
+    P6SEL0 |= BIT7;
+    P6SEL1 &= ~BIT7;
+    P6DIR |= BIT7;
+
+    //Configuring P2.4 for capture
+    P2SEL0 |= BIT4;
+    P2SEL1 &= ~BIT4;
+    P2DIR &=~ BIT4;
+
+    //test led
+    P2->DIR = BIT0;
+
+    //TimerA2.4 setup for PWM
+    TIMER_A2->CCR[0] = 37500;           // 10Hz
+    TIMER_A2->CCR[4] = 37500/2;         // 50% duty cycle
+    TIMER_A2->CCTL[4] = 0xE0;
+    TIMER_A2->CTL = 0x02D4;
+
+    //TimerA0.1 setup for capture
+    TIMER_A0->CTL = 0x0224;
+    TIMER_A0->CCTL[1] = 0x4910;
+
+}
+
+void blockage(void){
+    // initialize TimerA with interrupts for 10s
+    TIMER_A1->CCR[0] = 30001;
+    TIMER_A1->CCR[4] = 30000;
+    TIMER_A1->CCTL[4] = 0x10;
+    TIMER_A1->CTL = 0x0254;
+
+}
+void TA1_N_IRQHandler(void){
+    flag0=1;
+    TIMER_A1->CTL=0;        //disables TimerA and interrupt flag
+    TIMER_A1->CCTL[4]=0;
+}
+
+

@@ -1,0 +1,40 @@
+#include "msp.h"
+#include "stdio.h"
+volatile int edge0, edge1, period, flag10, flag0;
+void setup_init(void);
+void main(void)
+{
+    WDT_A->CTL = WDT_A_CTL_PW | WDT_A_CTL_HOLD;		// stop watchdog timer
+
+    setup_init();
+    NVIC_EnableIRQ(TA0_N_IRQn);
+    __enable_interrupt();
+
+    while(1){
+        if(flag10){
+            P2OUT |= BIT0;
+        }
+        else if(flag0)
+            P2OUT &=~BIT0;
+
+        //  printf("%d\n",period);
+        //enable timer for x seconds, if this int fires, then the period is now set to zero, which turns off the LED
+        //have if statement with new condition for no connection
+    }
+}
+
+void TA0_N_IRQHandler(void){
+
+if(TIMER_A0->CCTL[1]&BIT0){
+    edge1 = TIMER_A0->CCR[1];
+    period = edge1 - edge0;
+    edge0 = edge1;
+    if ((35635<period) && (period<39375)) // within 5% of 10Hz period
+        flag10=1;
+    else
+        flag0=1;
+}
+    TIMER_A0->CCTL[1] &=~ BIT1;
+}
+
+
