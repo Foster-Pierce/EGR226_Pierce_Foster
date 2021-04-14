@@ -1,3 +1,12 @@
+/****************************************************************************
+ * Author: Pierce Foster
+ * Course: EGR 226 - 905
+ * Date: 04/02/2021
+ * Project: Lab 10 Part 1
+ * File: part1main.c
+ * Description: This code takes the voltage from a potentiometer
+ * and prints the raw, and adjusted voltage to the console window
+ ****************************************************************************/
 #include "msp.h"
 #include<stdio.h>
 
