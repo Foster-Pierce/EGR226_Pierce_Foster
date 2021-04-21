@@ -1,0 +1,28 @@
+
+**** Build of configuration Debug for project Final Project ****
+
+"C:\\ti\\ccs930\\ccs\\utils\\bin\\gmake" -k -j 4 all -O 
+ 
+Building file: "../FinalFuncs.c"
+Invoking: ARM Compiler
+"C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs930/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs930/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/pierce/Documents/GitHub/EGR226_Pierce_Foster/Final Project" --include_path="C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.7.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="FinalFuncs.d_raw"  "../FinalFuncs.c"
+ 
+>> Compilation failure
+subdir_rules.mk:9: recipe for target 'FinalFuncs.obj' failed
+"../FinalFuncs.c", line 54: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"../FinalFuncs.c", line 120: error #20: identifier "n" is undefined
+"../FinalFuncs.c", line 128: error #20: identifier "n" is undefined
+2 errors detected in the compilation of "../FinalFuncs.c".
+gmake: *** [FinalFuncs.obj] Error 1
+Building file: "../Initializer.c"
+Invoking: ARM Compiler
+"C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="C:/ti/ccs930/ccs/ccs_base/arm/include" --include_path="C:/ti/ccs930/ccs/ccs_base/arm/include/CMSIS" --include_path="C:/Users/pierce/Documents/GitHub/EGR226_Pierce_Foster/Final Project" --include_path="C:/ti/ccs930/ccs/tools/compiler/ti-cgt-arm_18.12.7.LTS/include" --advice:power=all --define=__MSP432P401R__ --define=ccs -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi --preproc_with_compile --preproc_dependency="Initializer.d_raw"  "../Initializer.c"
+"../Initializer.c", line 44: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"../Initializer.c", line 51: remark #1527-D: (ULP 2.1) Detected SW delay loop using empty loop. Recommend using a timer module instead
+"../Initializer.c", line 139 (col. 6): remark #1531-D: (ULP 5.2) Detected floating point operation(s). Recommend moving them to RAM during run time or not using as these are processing/power intensive
+"../Initializer.c", line 142 (col. 24): remark #1531-D: (ULP 5.2) Detected floating point operation(s). Recommend moving them to RAM during run time or not using as these are processing/power intensive
+Finished building: "../Initializer.c"
+ 
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
