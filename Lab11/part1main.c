@@ -1,3 +1,13 @@
+/****************************************************************************
+ * Author: Pierce Foster
+ * Course: EGR 226 - 905
+ * Date: 04/08/2021
+ * Project: Lab 11
+ * File: part1main.c
+ * Description: This program detects when the IR receiver is detecting a 10 Hz
+ * frequency, and turns the onboard LED on. When this signal is blocked, the 
+ * light turns off, and this process can repeat forever.
+ ****************************************************************************/
 #include "msp.h"
 volatile int edge0, edge1, period, flag10, blocked;
 void SysTick_Init_interrupt(void);
@@ -22,7 +32,7 @@ void main(void)
         }
     }
 }
-/****| ssetup_init | *****************************************
+/****| setup_init | *****************************************
  * Brief: Initializes the seven segment display
  * param: void
  * return: void

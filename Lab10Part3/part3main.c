@@ -1,3 +1,12 @@
+/****************************************************************************
+ * Author: Pierce Foster
+ * Course: EGR 226 - 905
+ * Date: 04/02/2021
+ * Project: Lab 10 Part3
+ * File: part3main.c
+ * Description: This code takes the voltage from the TMP36 and prints this
+ * temperature in celsius to the LCD.
+ ****************************************************************************/
 #include <FuncLibPart3.h>
 #include "msp.h"
 volatile int flag=0;
