@@ -90,7 +90,7 @@ void main(void)
 
             else if((pressed>=1 && pressed <10)){       //condition works correctly, motor doesn't spin, PWM is getting set correctly
                 DC=Press_Convert(pressed)*37500;
-                MotorConfig(DC);        //located in initializer.c
+                MotorConfig(DC);
                 n=0;
                 PrintMenu(1);
                 pressed=pressZeroed;

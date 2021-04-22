@@ -137,6 +137,8 @@ void Keypad_init(void){
     P4OUT &= ~(BIT4 | BIT5 | BIT6);
 }
 
+
+
 void ServoConfig(int d){
     //Config for TimerA with variable duty cycle
     TIMER_A1->CCR[0] = 59999;
