@@ -1,15 +1,72 @@
-#include <LCD.h>
 #include <FuncsLib.h>
 #include "msp.h"
 
-//make sure all pwm are initialized corectly
+void Setup_Init(void){
+    // configure P3.2 as simple I/O SWITCH 4 WHITE
+    P3SEL1 &= ~BIT2;
+    P3SEL0 &= ~BIT2;
+    P3DIR &= ~BIT2;
+    P3REN |= BIT2;
+    P3OUT |= BIT2;
+    P3IES |= BIT2;
+    P3IE |= BIT2;
+    P3IFG = 0;
+    // configure P3.3 as simple I/O SWITCH 5 BLACK
+    P3SEL1 &= ~BIT3;
+    P3SEL0 &= ~BIT3;
+    P3DIR &= ~BIT3;
+    P3REN |= BIT3;
+    P3OUT |= BIT3;
+    P3IES |= BIT3;
+    P3IE |= BIT3;
+    P3IFG = 0;
+
+    //Configuring P6.7 for PWM Output TimerA2.4  motor
+    P6SEL0 |= BIT7;
+    P6SEL1 &= ~BIT7;
+    P6DIR |= BIT7;
+
+
+    //Configuring P2.4 for PWM Output TimerA0.1  rgb r
+    P2SEL0 |= BIT4;
+    P2SEL1 &= ~BIT4;
+    P2DIR |= BIT4;
+
+    //Configuring P2.5 for PWM Output TimerA0.2  rgb g
+    P2SEL0 |= BIT5;
+    P2SEL1 &= ~BIT5;
+    P2DIR |= BIT5;
+
+    //Configuring P2.6 for PWM Output TimerA0.3  rgb b
+    P2SEL0 |= BIT6;
+    P2SEL1 &= ~BIT6;
+    P2DIR |= BIT6;
+
+    //Configuring P7.7 for PWM Output TimerA1.1   servo
+    P7SEL0 |= BIT7;
+    P7SEL1 &= ~BIT7;
+    P7DIR |= BIT7;
+
+    //Configuring P10.5 for PWM Output TimerA3.1   lcd
+    P10SEL0 |= BIT5;
+    P10SEL1 &= ~BIT5;
+    P10DIR |= BIT5;
+
+    P2DIR |= BIT0;
+    P2DIR |= BIT1;
+
+    //add multiple more timerA for PWM of RGB and backlight
+}
+
 void LCD_init (void){
-    //initialize data pins P2.4 - 2.7
-    P2SEL1 = 0x00;
-    P2SEL0 = 0x00;
-    P2DIR |= (BIT4 | BIT5 | BIT6 | BIT7);
-    P2REN &= ~(BIT4 | BIT5 | BIT6 | BIT7);
-    P2OUT |= (BIT4 | BIT5 | BIT6 | BIT7);
+
+    //initialize data pins P8.4 - 8.7
+    P8SEL1 = 0x00;
+    P8SEL0 = 0x00;
+    P8DIR |= (BIT4 | BIT5 | BIT6 | BIT7);
+    P8REN &= ~(BIT4 | BIT5 | BIT6 | BIT7);
+    P8OUT |= (BIT4 | BIT5 | BIT6 | BIT7);
+
 
     //initialize RS and E on P5.2 & P5.0
     P5SEL1 = 0x00;
@@ -66,81 +123,50 @@ void adcsetup(void)
 }
 
 void Keypad_init(void){
-    //Configure GPIO ROWS: P4 .0 .1 .2 .3 & COL: P4 .4 .5 .6
+    //Configure GPIO ROWS: P6 .0 .1 .2 .3 & COL: P4 .4 .5 .6
 
     //Configure ROWS
-    P4SEL1 = 0x00;
-    P4SEL0 = 0x00;
-    P4DIR = 0x00;
-    P4REN = (BIT0 | BIT1 | BIT2 | BIT3);
-    P4OUT = (BIT0 | BIT1 | BIT2 | BIT3);
+    P6SEL1 = 0x00;
+    P6SEL0 = 0x00;
+    P6DIR = 0x00;
+    P6REN = (BIT0 | BIT1 | BIT2 | BIT3);
+    P6OUT = (BIT0 | BIT1 | BIT2 | BIT3);
 
     //Configure COLUMNS
     P4REN &= ~(BIT4 | BIT5 | BIT6);
     P4OUT &= ~(BIT4 | BIT5 | BIT6);
 }
 
-void Setup_Init(void){
-    // configure P3.5 as simple I/O SWITCH 1 RED
-    P3SEL1 &= ~BIT5;
-    P3SEL0 &= ~BIT5;
-    P3DIR &= ~BIT5;
-    P3REN |= BIT5;
-    P3OUT |= BIT5;
-    P3IES |= BIT5;
-    P3IE |= BIT5;
-    P3IFG = 0;
 
-    // configure P3.6 as simple I/O SWITCH 2 GREEN
-    P3SEL1 &= ~BIT6;
-    P3SEL0 &= ~BIT6;
-    P3DIR &= ~BIT6;
-    P3REN |= BIT6;
-    P3OUT |= BIT6;
-    P3IES |= BIT6;
-    P3IE |= BIT6;
-    P3IFG = 0;
 
-    // configure P3.7 as simple I/O SWITCH 3 BLUE
-    P3SEL1 &= ~BIT7;
-    P3SEL0 &= ~BIT7;
-    P3DIR &= ~BIT7;
-    P3REN |= BIT7;
-    P3OUT |= BIT7;
-    P3IES |= BIT7;
-    P3IE |= BIT7;
-    P3IFG = 0;
-
-    // configure P3.2 as simple I/O SWITCH 4 WHITE
-    P3SEL1 &= ~BIT2;
-    P3SEL0 &= ~BIT2;
-    P3DIR &= ~BIT2;
-    P3REN |= BIT2;
-    P3OUT |= BIT2;
-    P3IES |= BIT2;
-    P3IE |= BIT2;
-    P3IFG = 0;
-    // configure P3.3 as simple I/O SWITCH 5 BLACK
-    P3SEL1 &= ~BIT3;
-    P3SEL0 &= ~BIT3;
-    P3DIR &= ~BIT3;
-    P3REN |= BIT3;
-    P3OUT |= BIT3;
-    P3IES |= BIT3;
-    P3IE |= BIT3;
-    P3IFG = 0;
-
-    //Configuring P6.7 for PWM Output
-    P6SEL0 |= BIT7;
-    P6SEL1 &= ~BIT7;
-    P6DIR |= BIT7;
-
-    //add multiple more timerA for PWM of servo and backlight
+void ServoConfig(int d){
+    //Config for TimerA with variable duty cycle
+    TIMER_A1->CCR[0] = 59999;
+    TIMER_A1->CCR[1] = d;
+    TIMER_A1->CCTL[1] = 0xE0;
+    TIMER_A1->CTL = 0x0214;
 }
-void MotorConfig(double d){
-//Config for TimerA with variable duty cycle
+
+void MotorConfig(double duty){
+
     TIMER_A2->CCR[0] = 37500;
-    TIMER_A2->CCR[4] = d;
+    TIMER_A2->CCR[4] = duty;
     TIMER_A2->CCTL[4] = 0xE0;
     TIMER_A2->CTL = 0x0254;
+}
+
+void RGBConfig(double d, int n){        //where n=1 for red, n=2 for green, n=3 for blue
+    TIMER_A0->CCR[0] = 59999;
+    TIMER_A0->CCR[n] = d;
+    TIMER_A0->CCTL[n] = 0xE0;
+    TIMER_A0->CTL = 0x0214;
+
+}
+
+void LCDPWM(double d){        //updates brightness when the potentiometer is turned
+    TIMER_A3->CCR[0] = 30000;
+    TIMER_A3->CCR[1] = d;
+    TIMER_A3->CCTL[1] = 0xE0;
+    TIMER_A3->CTL = 0x0214;
+
 }

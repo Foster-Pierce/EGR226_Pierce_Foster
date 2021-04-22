@@ -10,11 +10,12 @@ const char arr[4][6]={
 
 void LCD_init (void){
     //initialize data pins P2.4 - 2.7
-    P2SEL1 = 0x00;
-    P2SEL0 = 0x00;
-    P2DIR |= (BIT4 | BIT5 | BIT6 | BIT7);
-    P2REN &= ~(BIT4 | BIT5 | BIT6 | BIT7);
-    P2OUT |= (BIT4 | BIT5 | BIT6 | BIT7);
+    P8SEL1 = 0x00;
+    P8SEL0 = 0x00;
+    P8DIR |= (BIT4 | BIT5 | BIT6 | BIT7);
+    P8REN &= ~(BIT4 | BIT5 | BIT6 | BIT7);
+    P8OUT |= (BIT4 | BIT5 | BIT6 | BIT7);
+
 
     //initialize RS and E on P5.2 & P5.0
     P5SEL1 = 0x00;
@@ -52,8 +53,8 @@ void PulseEnablePin (void){
     Systick_us_delay(10);
 }
 void pushNibble (int nibble){
-    P2OUT &=~0xF0; // clear P2.4-P2.7
-    P2OUT |= (nibble & 0x0F) << 4; // port pins P2.4 - P2.7 wired to D4 - D7
+    P8OUT &=~0xF0; // clear P2.4-P2.7
+    P8OUT |= (nibble & 0x0F) << 4; // port pins P2.4 - P2.7 wired to D4 - D7
     PulseEnablePin();
 }
 void pushByte (int byte){

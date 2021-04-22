@@ -22,11 +22,11 @@ void Keypad_init(void){
     //Configure GPIO ROWS: P4 .0 .1 .2 .3 & COL: P4 .4 .5 .6
 
     //Configure ROWS
-    P4SEL1 = 0x00;
-    P4SEL0 = 0x00;
-    P4DIR = 0x00;
-    P4REN = (BIT0 | BIT1 | BIT2 | BIT3);
-    P4OUT = (BIT0 | BIT1 | BIT2 | BIT3);
+    P6SEL1 = 0x00;
+    P6SEL0 = 0x00;
+    P6DIR = 0x00;
+    P6REN = (BIT0 | BIT1 | BIT2 | BIT3);
+    P6OUT = (BIT0 | BIT1 | BIT2 | BIT3);
 
     //Configure COLUMNS
     P4REN &= ~(BIT4 | BIT5 | BIT6);
@@ -42,10 +42,10 @@ int Keypad_Read(void){
         P4OUT &=~ BIT (4+col); //set column 0 to LOW
 
         SysTick_ms_delay(10);
-        row = P4IN & 0x0F; //read rows
+        row = P6IN & 0x0F; //read rows
         SysTick_ms_delay(10);
 
-        while ( !(P4IN & BIT0) | !(P4IN & BIT1) | !( P4IN & BIT2) | !( P4IN & BIT3) );
+        while ( !(P6IN & BIT0) | !(P6IN & BIT1) | !( P6IN & BIT2) | !( P6IN & BIT3) );
 
         if (row != 0x0F) break; // if one of the input is low, some key is pressed.
     }

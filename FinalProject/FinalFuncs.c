@@ -1,4 +1,3 @@
-#include <LCD.h>
 #include <FuncsLib.h>
 #include "msp.h"
 
@@ -7,6 +6,30 @@ const char menu1[4][11]=
  {'1',')',' ','D','O','O','R',' ',' ',' ',' '},
  {'2',')',' ','M','O','T','O','R',' ',' ',' '},
  {'3',')',' ','L','E','D','s',' ',' ',' ',' '}};
+
+const char menu2[4][11]=
+{{'M','E','N','U',':','D','O','O','R',' ',' '},
+ {'1',')',' ','O','P','E','N',' ',' ',' ',' '},
+ {'2',')',' ','C','L','O','S','E','D',' ',' '},
+ {'*',')',' ','E','X','I','T',' ',' ',' ',' '}};
+
+const char menu3[4][11]=
+{{'M','E','N','U',':','M','O','T','O','R',' '},
+ {'1',')',' ','S','P','E','E','D',' ',' ',' '},
+ {'2',')',' ','0','-','9',' ',' ',' ',' ',' '},
+ {'*',')',' ','E','X','I','T',' ',' ',' ',' '}};
+
+const char menu4[4][11]=
+{{'M','E','N','U',':','R','G','B',' ',' ',' '},
+ {'1',')',' ','R','E','D',' ',' ',' ',' ',' '},
+ {'2',')',' ','G','R','E','E','N',' ',' ',' '},
+ {'3',')',' ','B','L','U','E',' ',' ',' ',' '}};
+
+const char menu5[4][11]=
+{{'M','E','N','U',':','R','G','B',' ',' ',' '},
+ {'1',')',' ','B','R','I','G','H','T',' ',' '},
+ {'2',')',' ','0','-','1','0','0',' ',' ',' '},
+ {'*',')',' ','E','X','I','T',' ',' ',' ',' '}};
 
 void PulseEnablePin (void){
     P5OUT &=~BIT0;          //pulse low for 10us
@@ -17,8 +40,8 @@ void PulseEnablePin (void){
     Systick_us_delay(10);
 }
 void pushNibble (int nibble){
-    P2OUT &=~0xF0; // clear P2.4-P2.7
-    P2OUT |= (nibble & 0x0F) << 4; // port pins P2.4 - P2.7 wired to D4 - D7
+    P8OUT &=~0xF0; // clear P8.4-P8.7
+    P8OUT |= (nibble & 0x0F) << 4; // port pins P8.4 - P8.7 wired to D4 - D7
     PulseEnablePin();
 }
 void pushByte (int byte){
@@ -47,10 +70,10 @@ int Keypad_Read(void){
         P4OUT &=~ BIT (4+col); //set column 0 to LOW
 
         Systick_ms_delay(10);
-        row = P4IN & 0x0F; //read rows
+        row = P6IN & 0x0F; //read rows
         Systick_ms_delay(10);
 
-        while ( !(P4IN & BIT0) | !(P4IN & BIT1) | !( P4IN & BIT2) | !( P4IN & BIT3) );
+        while ( !(P6IN & BIT0) | !(P6IN & BIT1) | !( P6IN & BIT2) | !( P6IN & BIT3) );
 
         if (row != 0x0F) break; // if one of the input is low, some key is pressed.
     }
@@ -66,22 +89,44 @@ int Keypad_Read(void){
 
     return num;
 }
-void PrintMenu1(int c){
+void PrintMenu1(int c, int m){
     int i;
     write_command(6); //entry mode
+    if (m==1){
     for(i=0;i<11;i++)
-        write_data(menu1[c][i]);
+            write_data(menu1[c][i]);
+    }
+    else if (m==2){
+        for(i=0;i<11;i++)
+            write_data(menu2[c][i]);
+
+    }
+    else if (m==3){
+        for(i=0;i<11;i++)
+            write_data(menu3[c][i]);
+
+    }
+    else if (m==4){
+        for(i=0;i<11;i++)
+            write_data(menu4[c][i]);
+
+    }
+    else if (m==5){
+        for(i=0;i<11;i++)
+            write_data(menu5[c][i]);
+
+    }
 
 }
-void PrintMainMenu(void){
+void PrintMenu(int t){
     write_command(0x82);        //begin on line 1
-    PrintMenu1(0);               //print line one characters
+    PrintMenu1(0, t);               //print line one characters
     write_command(0xC3);        //begin line 2, etc.
-    PrintMenu1(1);
+    PrintMenu1(1, t);
     write_command(0x93);
-    PrintMenu1(2);
+    PrintMenu1(2, t);
     write_command(0xD3);
-    PrintMenu1(3);
+    PrintMenu1(3, t);
     write_command(0xDA);
 }
 
@@ -105,27 +150,32 @@ void MotorSpeed(double x){
     MotorConfig(duty);
 }
 
-void debouncer(void){
-    // initialize TimerA1.1 with interrupts for 10s
-    TIMER_A1->CCR[0] = 30001;
-    TIMER_A1->CCR[1] = 30000;
-    TIMER_A1->CCTL[1] = 0x10;
-    TIMER_A1->CTL = 0x0254;
+void RGBSpeed(double n,int c){
+    int dutyrgb = n* 30000; //period for rgb
+    RGBConfig(dutyrgb,c);
+}
+
+void debouncer(void){ //switch debounce to timer32
+    // initialize Timer32_2 with interrupts for 10ms
+    TIMER32_2->LOAD = 29999;
+    TIMER32_2->CONTROL = 0xE3;
 
 }
-void TA1_N_IRQHandler(void){                //modify to fit the 5 buttons
-    //if red button was pressed
-    if((P3IN & BIT5) == 0){
 
-    }
-    //if green button was pressed
-    else if((P3IN & BIT6) == 0){
+void T32_INT2_IRQHandler (void){
+    //do something
+    TIMER32_2->INTCLR = 1;
+    TIMER32_2->LOAD = 29999;
 
-    }
-    //if blue button was pressed
-    else if((P3IN & BIT7) == 0){
 
-    }
+}
+void PORT3_IRQHandler (void){   // port 3 service routine (buttons)
+    debouncer();            //timer enabled with interrupts begin running for 10ms delay
+    P3IFG=0;
+}
+
+
+/* void TA1_N_IRQHandler(void){                //modify to fit the 5 buttons
     //if white button was pressed
     else if((P3IN & BIT2) == 0){
 
@@ -137,8 +187,4 @@ void TA1_N_IRQHandler(void){                //modify to fit the 5 buttons
     TIMER_A1->CTL=0;        //disables TimerA1.1 and interrupt flag
     TIMER_A1->CCTL[1]=0;
 }
-
-void PORT3_IRQHandler (void){   // port 3 service routine (buttons)
-    debouncer();            //timer enabled with interrupts begin running for 10ms delay
-    P3IFG=0;
-}
+ */
