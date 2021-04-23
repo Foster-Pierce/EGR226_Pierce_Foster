@@ -1,0 +1,295 @@
+#include <FuncsLib.h>
+#include "msp.h"
+#include <stdio.h>
+volatile int rgbr,rgbg,rgbb, set_r_off, set_g_off, set_b_off;
+void main(void)
+{
+    WDT_A->CTL = WDT_A_CTL_PW | WDT_A_CTL_HOLD;     // stop watchdog timer
+
+    int n=0, pressed;
+    const int pressZeroed=15;
+    double DC=0, LCD_DC, x, volt;
+    //Initialization
+    Setup_Init();
+    LCD_init();
+    adcsetup();
+    Keypad_init();
+    //Setup for LCD and Servo to begin in correct position
+    PrintMenu(1);
+    ServoConfig(1999);
+
+    NVIC_EnableIRQ(T32_INT2_IRQn);
+    NVIC_EnableIRQ(PORT3_IRQn);
+    __enable_interrupt();
+
+    while(1){
+
+        pressed = Keypad_Read();    //pressed values: 1-9 are same as keypad 1-9, 10 is star, 11 is 0, 12 is pound
+
+        switch(n) {
+        case 0 :                    //Main Menu
+            if(pressed==1){
+                n=1;
+                PrintMenu(2);
+                pressed=pressZeroed;
+                break;
+            }
+            else if(pressed==2){
+                n=2;
+                PrintMenu(3);
+                pressed=pressZeroed;
+                break;
+            }
+            else if(pressed==3){
+                n=3;
+                PrintMenu(4);
+                pressed=pressZeroed;
+                break;
+            }
+
+            break;
+
+        case 1 :                    //Door Menu
+
+            if(pressed==1)          //option 1, open door
+            {
+                ServoConfig(5499);
+                P2OUT &=~ BIT0;
+                P2OUT |= BIT1;
+                n=0;
+                PrintMenu(1);
+                pressed=pressZeroed;
+                break;
+            }
+
+            else if (pressed==2)    //option 2, close door
+            {
+                ServoConfig(1999);
+                P2OUT &=~ BIT1;
+                P2OUT |= BIT0;
+                n=0;
+                PrintMenu(1);
+                pressed=pressZeroed;
+                break;
+            }
+            else if (pressed==10){  //option 3, exit to main
+                n=0;
+                PrintMenu(1);
+                pressed=pressZeroed;
+                break;
+            }
+
+            break;
+
+        case 2 :                        //Motor Menu
+
+
+            if(pressed==11){
+                MotorConfig(0);
+                n=0;
+                PrintMenu(1);
+                pressed=pressZeroed;
+                break;
+            }
+
+            else if((pressed>=1 && pressed <10)){
+                DC=Press_Convert(pressed)*37500;
+                MotorConfig(DC);
+                n=0;
+                PrintMenu(1);
+                pressed=pressZeroed;
+                break;
+            }
+            else if (pressed==10){
+                n=0;
+                PrintMenu(1);
+                pressed=pressZeroed;
+                break;
+            }
+
+            break;
+
+        case 3 :                        //RGB Menu
+
+            if(pressed==1){
+                n=4;
+                PrintMenu(5);
+                pressed=pressZeroed;
+                break;
+            }
+            else if(pressed==2){
+                n=5;
+                PrintMenu(5);
+                pressed=pressZeroed;
+                break;
+            }
+            else if(pressed==3){
+                n=6;
+                PrintMenu(5);
+                pressed=pressZeroed;
+                break;
+            }
+
+            else if(pressed==10){
+                n=0;
+                PrintMenu(1);
+                pressed=pressZeroed;
+                break;
+            }
+
+            break;
+
+        case 4 :                        //RGB Red Brightness
+
+            if(pressed==11){
+                RGBConfig(0,1);
+                n=0;
+                PrintMenu(1);
+                pressed=pressZeroed;
+                set_r_off=1;
+                break;
+            }
+
+            else if((pressed>=1 && pressed <10)){
+                DC=Press_Convert(pressed);
+                RGBConfig(DC,1);
+                n=0;
+                PrintMenu(1);
+                pressed=pressZeroed;
+                break;
+            }
+            else if (pressed==10){
+                n=0;
+                PrintMenu(1);
+                pressed=pressZeroed;
+                break;
+            }
+
+            break;
+
+        case 5 :                        //RGB Green Brightness
+
+            if(pressed==11){
+                RGBConfig(0,2);
+                n=0;
+                PrintMenu(1);
+                pressed=pressZeroed;
+                set_g_off=1;
+                break;
+            }
+
+            else if((pressed>=1 && pressed <10)){
+                DC=Press_Convert(pressed);
+                RGBConfig(DC,2);
+                n=0;
+                PrintMenu(1);
+                pressed=pressZeroed;
+                break;
+            }
+            else if (pressed==10){
+                n=0;
+                PrintMenu(1);
+                pressed=pressZeroed;
+                break;
+            }
+
+            break;
+
+        case 6 :                        //RGB Blue Brightness
+
+            if(pressed==11){
+                RGBConfig(0,3);
+                n=0;
+                PrintMenu(1);
+                pressed=pressZeroed;
+                set_b_off=1;
+                break;
+            }
+
+            else if((pressed>=1 && pressed <10)){
+                DC=Press_Convert(pressed);
+                RGBConfig(DC,3);
+                n=0;
+                PrintMenu(1);
+                pressed=pressZeroed;
+                break;
+            }
+            else if (pressed==10){
+                n=0;
+                PrintMenu(1);
+                pressed=pressZeroed;
+                break;
+            }
+
+            break;
+        }
+        ADC14->CTL0 |=1;        //P5.5 from potentiometer, also not fully wired yet
+        while(!ADC14->IFGR0);
+        x = ADC14->MEM[5];
+        volt = x*0.0002;        //gives value b/w 3.3 and 0 for the contrast and then for brightness (DC)
+        LCD_DC = volt/3.3;
+        LCDPWM(1-LCD_DC);
+
+        //   printf("test raw value:\t%f\n", x);
+        Systick_ms_delay(10);
+    }
+}
+
+void T32_INT2_IRQHandler (void){
+    //if black button was pressed Motor Stop
+    if((P3IN & BIT3) == 0){
+        TIMER_A2->CCR[4] = 0;
+    }
+    //if white button was pressed toggle RGB LED
+    else if((P3IN & BIT2) == 0){
+
+        if(TIMER_A0->CCR[1] !=0){
+            rgbr = TIMER_A0->CCR[1];
+            set_r_off=0;
+        }
+
+        if(TIMER_A0->CCR[2] !=0){
+            rgbg = TIMER_A0->CCR[2];
+            set_g_off=0;
+        }
+
+        if(TIMER_A0->CCR[3] !=0){
+            rgbb = TIMER_A0->CCR[3];
+            set_b_off=0;
+        }
+
+
+        if(!(set_r_off)){
+            if(TIMER_A0->CCR[1] == rgbr)
+                TIMER_A0->CCR[1] = 0;
+            R_on=0;
+            break;
+        }
+        else if(R_on==0){
+            TIMER_A0->CCR[1] = rgbr;
+            R_on=1;
+        }
+        if(!(set_g_off)){
+            if(TIMER_A0->CCR[2] == rgbg)
+                TIMER_A0->CCR[2] = 0;
+            G_on=0;
+            break;
+        }
+        else if(G_on==0){
+            TIMER_A0->CCR[2] = rgbg;
+            G_on=1;
+        }
+        if(!(set_b_off)){
+            if(TIMER_A0->CCR[3] == rgbb)
+                TIMER_A0->CCR[3] = 0;
+            B_on=0;
+            break;
+        }
+        else if(B_on==0){
+            TIMER_A0->CCR[3] = rgbb;
+            B_on=1;
+        }
+    }
+    TIMER32_2->INTCLR = 1;
+    TIMER32_2->LOAD = 1500000;
+}

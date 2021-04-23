@@ -54,7 +54,8 @@ void Setup_Init(void){
 
     P2DIR |= BIT0;
     P2DIR |= BIT1;
-
+    P2OUT |= BIT0;
+    P2OUT &=~ BIT1;
     //add multiple more timerA for PWM of RGB and backlight
 }
 
@@ -162,8 +163,8 @@ void RGBConfig(double d, int n){        //where n=1 for red, n=2 for green, n=3 
 }
 
 void LCDPWM(double d){        //updates brightness when the potentiometer is turned
-    TIMER_A3->CCR[0] = 30000;
-    TIMER_A3->CCR[1] = d;
+    TIMER_A3->CCR[0] = 30000;       //set to a very high frequency
+    TIMER_A3->CCR[1] = d*30000;
     TIMER_A3->CCTL[1] = 0xE0;
     TIMER_A3->CTL = 0x0214;
 

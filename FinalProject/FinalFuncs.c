@@ -1,11 +1,10 @@
 #include <FuncsLib.h>
 #include "msp.h"
-volatile int rgbr,rgbg,rgbb;
 const char menu1[4][11]=
 {{'M','E','N','U',' ','S','E','L','E','C','T'},
-{'1',')',' ','D','O','O','R',' ',' ',' ',' '},
-{'2',')',' ','M','O','T','O','R',' ',' ',' '},
-{'3',')',' ','L','E','D','s',' ',' ',' ',' '}};
+ {'1',')',' ','D','O','O','R',' ',' ',' ',' '},
+ {'2',')',' ','M','O','T','O','R',' ',' ',' '},
+ {'3',')',' ','L','E','D','s',' ',' ',' ',' '}};
 
 const char menu2[4][11]=
 {{'M','E','N','U',':','D','O','O','R',' ',' '},
@@ -146,41 +145,12 @@ double Press_Convert(int n){
 
 void debouncer(void){ //switch debounce to timer32
     // initialize Timer32_2 with interrupts for 10ms
-    TIMER32_2->LOAD = 29999;
+    TIMER32_2->LOAD = 1500000;
     TIMER32_2->CONTROL = 0xE3;
 
 }
 
-void T32_INT2_IRQHandler (void){
-    //if black button was pressed Motor Stop
-    if((P3IN & BIT3) == 0){
-        TIMER_A2->CCR[4] = 0;
-    }
-    //if white button was pressed toggle RGB LED
-    else if((P3IN & BIT2) == 0){
 
-        rgbr = TIMER_A0->CCR[1];
-        rgbg = TIMER_A0->CCR[2];
-        rgbb = TIMER_A0->CCR[3];
-        if(TIMER_A0->CCR[1] == 0)
-            TIMER_A0->CCR[1] = rgbr;
-        else if(TIMER_A0->CCR[1] == rgbr)
-            TIMER_A0->CCR[1] = 0;
-
-        if(TIMER_A0->CCR[2] == 0)
-            TIMER_A0->CCR[2] = rgbg;
-        else if(TIMER_A0->CCR[2] == rgbg)
-            TIMER_A0->CCR[2] = 0;
-
-        if(TIMER_A0->CCR[3] == 0)
-            TIMER_A0->CCR[3] = rgbb;
-        else if(TIMER_A0->CCR[3] == rgbb)
-            TIMER_A0->CCR[3] = 0;
-
-    }
-    TIMER32_2->INTCLR = 1;
-    TIMER32_2->LOAD = 29999;
-}
 
 
 void PORT3_IRQHandler (void){   // port 3 service routine (buttons)

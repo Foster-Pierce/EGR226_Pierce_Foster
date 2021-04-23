@@ -162,5 +162,6 @@ void PrintChar(void);
 
 void RGBSpeed(double n,int c);
 void RGBConfig(double d, int n);
+void LCDPWM(double d);
 
 #endif
