@@ -1,6 +1,35 @@
 #include <FuncsLib.h>
 #include "msp.h"
+volatile int rgbr,rgbg,rgbb;
+const char menu1[4][11]=
+{{'M','E','N','U',' ','S','E','L','E','C','T'},
+{'1',')',' ','D','O','O','R',' ',' ',' ',' '},
+{'2',')',' ','M','O','T','O','R',' ',' ',' '},
+{'3',')',' ','L','E','D','s',' ',' ',' ',' '}};
 
+const char menu2[4][11]=
+{{'M','E','N','U',':','D','O','O','R',' ',' '},
+ {'1',')',' ','O','P','E','N',' ',' ',' ',' '},
+ {'2',')',' ','C','L','O','S','E','D',' ',' '},
+ {'*',')',' ','E','X','I','T',' ',' ',' ',' '}};
+
+const char menu3[4][11]=
+{{'M','E','N','U',':','M','O','T','O','R',' '},
+ {'1',')',' ','S','P','E','E','D',' ',' ',' '},
+ {'2',')',' ','0','-','9',' ',' ',' ',' ',' '},
+ {'*',')',' ','E','X','I','T',' ',' ',' ',' '}};
+
+const char menu4[4][11]=
+{{'M','E','N','U',':','R','G','B',' ',' ',' '},
+ {'1',')',' ','R','E','D',' ',' ',' ',' ',' '},
+ {'2',')',' ','G','R','E','E','N',' ',' ',' '},
+ {'3',')',' ','B','L','U','E',' ',' ',' ',' '}};
+
+const char menu5[4][11]=
+{{'M','E','N','U',':','R','G','B',' ',' ',' '},
+ {'1',')',' ','B','R','I','G','H','T',' ',' '},
+ {'2',')',' ','0','-','1','0','0',' ',' ',' '},
+ {'*',')',' ','E','X','I','T',' ',' ',' ',' '}};
 void PulseEnablePin (void){
     P5OUT &=~BIT0;          //pulse low for 10us
     Systick_us_delay(10);
@@ -63,7 +92,7 @@ void PrintMenu1(int c, int m){
     int i;
     write_command(6); //entry mode
     if (m==1){
-    for(i=0;i<11;i++)
+        for(i=0;i<11;i++)
             write_data(menu1[c][i]);
     }
     else if (m==2){
@@ -115,16 +144,6 @@ double Press_Convert(int n){
     return 0;
 }
 
-void MotorSpeed(double x){
-    int duty=37500*x;
-    MotorConfig(duty);
-}
-
-void RGBSpeed(double n,int c){
-    int dutyrgb = n* 30000; //period for rgb
-    RGBConfig(dutyrgb,c);
-}
-
 void debouncer(void){ //switch debounce to timer32
     // initialize Timer32_2 with interrupts for 10ms
     TIMER32_2->LOAD = 29999;
@@ -133,57 +152,38 @@ void debouncer(void){ //switch debounce to timer32
 }
 
 void T32_INT2_IRQHandler (void){
-    //do something
+    //if black button was pressed Motor Stop
+    if((P3IN & BIT3) == 0){
+        TIMER_A2->CCR[4] = 0;
+    }
+    //if white button was pressed toggle RGB LED
+    else if((P3IN & BIT2) == 0){
+
+        rgbr = TIMER_A0->CCR[1];
+        rgbg = TIMER_A0->CCR[2];
+        rgbb = TIMER_A0->CCR[3];
+        if(TIMER_A0->CCR[1] == 0)
+            TIMER_A0->CCR[1] = rgbr;
+        else if(TIMER_A0->CCR[1] == rgbr)
+            TIMER_A0->CCR[1] = 0;
+
+        if(TIMER_A0->CCR[2] == 0)
+            TIMER_A0->CCR[2] = rgbg;
+        else if(TIMER_A0->CCR[2] == rgbg)
+            TIMER_A0->CCR[2] = 0;
+
+        if(TIMER_A0->CCR[3] == 0)
+            TIMER_A0->CCR[3] = rgbb;
+        else if(TIMER_A0->CCR[3] == rgbb)
+            TIMER_A0->CCR[3] = 0;
+
+    }
     TIMER32_2->INTCLR = 1;
     TIMER32_2->LOAD = 29999;
-
-
 }
+
+
 void PORT3_IRQHandler (void){   // port 3 service routine (buttons)
     debouncer();            //timer enabled with interrupts begin running for 10ms delay
     P3IFG=0;
 }
-
-const char menu1[4][11]=
-{{'M','E','N','U',' ','S','E','L','E','C','T'},
- {'1',')',' ','D','O','O','R',' ',' ',' ',' '},
- {'2',')',' ','M','O','T','O','R',' ',' ',' '},
- {'3',')',' ','L','E','D','s',' ',' ',' ',' '}};
-
-const char menu2[4][11]=
-{{'M','E','N','U',':','D','O','O','R',' ',' '},
- {'1',')',' ','O','P','E','N',' ',' ',' ',' '},
- {'2',')',' ','C','L','O','S','E','D',' ',' '},
- {'*',')',' ','E','X','I','T',' ',' ',' ',' '}};
-
-const char menu3[4][11]=
-{{'M','E','N','U',':','M','O','T','O','R',' '},
- {'1',')',' ','S','P','E','E','D',' ',' ',' '},
- {'2',')',' ','0','-','9',' ',' ',' ',' ',' '},
- {'*',')',' ','E','X','I','T',' ',' ',' ',' '}};
-
-const char menu4[4][11]=
-{{'M','E','N','U',':','R','G','B',' ',' ',' '},
- {'1',')',' ','R','E','D',' ',' ',' ',' ',' '},
- {'2',')',' ','G','R','E','E','N',' ',' ',' '},
- {'3',')',' ','B','L','U','E',' ',' ',' ',' '}};
-
-const char menu5[4][11]=
-{{'M','E','N','U',':','R','G','B',' ',' ',' '},
- {'1',')',' ','B','R','I','G','H','T',' ',' '},
- {'2',')',' ','0','-','1','0','0',' ',' ',' '},
- {'*',')',' ','E','X','I','T',' ',' ',' ',' '}};
-
-/* void TA1_N_IRQHandler(void){                //modify to fit the 5 buttons
-    //if white button was pressed
-    else if((P3IN & BIT2) == 0){
-
-    }
-    //if black button was pressed
-    else if((P3IN & BIT3) == 0){
-
-    }
-    TIMER_A1->CTL=0;        //disables TimerA1.1 and interrupt flag
-    TIMER_A1->CCTL[1]=0;
-}
- */

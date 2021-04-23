@@ -13,6 +13,8 @@ void main(void)
     const int pressZeroed=15;
     double DC=0;
     P2OUT |= BIT0;
+    P2OUT &=~ BIT1;
+    ServoConfig(1999);
 
     NVIC_EnableIRQ(T32_INT2_IRQn);
     NVIC_EnableIRQ(PORT3_IRQn);
@@ -49,7 +51,7 @@ void main(void)
 
             if(pressed==1)          //option 1, open door
             {
-                ServoConfig(5999);
+                ServoConfig(5499);
                 P2OUT &=~ BIT0;
                 P2OUT |= BIT1;
                 n=0;
@@ -60,7 +62,7 @@ void main(void)
 
             else if (pressed==2)    //option 2, close door
             {
-                ServoConfig(4500);
+                ServoConfig(1999);
                 P2OUT &=~ BIT1;
                 P2OUT |= BIT0;
                 n=0;
@@ -80,7 +82,7 @@ void main(void)
         case 2 :                        //Motor Menu
 
 
-            if(pressed==20){        //fix condition
+            if(pressed==11){
                 MotorConfig(0);
                 n=0;
                 PrintMenu(1);
@@ -88,7 +90,7 @@ void main(void)
                 break;
             }
 
-            else if((pressed>=1 && pressed <10)){       //condition works correctly, motor doesn't spin, PWM is getting set correctly
+            else if((pressed>=1 && pressed <10)){
                 DC=Press_Convert(pressed)*37500;
                 MotorConfig(DC);        //located in initializer.c
                 n=0;
@@ -137,8 +139,8 @@ void main(void)
 
         case 4 :                        //RGB Red Brightness
 
-            if(pressed==0){
-                RGBSpeed(0,1);
+            if(pressed==11){
+                RGBConfig(0,1);
                 n=0;
                 PrintMenu(1);
                 pressed=pressZeroed;
@@ -147,7 +149,7 @@ void main(void)
 
             else if((pressed>=1 && pressed <10)){
                 DC=Press_Convert(pressed);
-                RGBSpeed(DC,1);
+                RGBConfig(DC,1);
                 n=0;
                 PrintMenu(1);
                 pressed=pressZeroed;
@@ -164,8 +166,8 @@ void main(void)
 
         case 5 :                        //RGB Green Brightness
 
-            if(pressed==0){
-                RGBSpeed(0,2);
+            if(pressed==11){
+                RGBConfig(0,2);
                 n=0;
                 PrintMenu(1);
                 pressed=pressZeroed;
@@ -174,7 +176,7 @@ void main(void)
 
             else if((pressed>=1 && pressed <10)){
                 DC=Press_Convert(pressed);
-                RGBSpeed(DC,2);
+                RGBConfig(DC,2);
                 n=0;
                 PrintMenu(1);
                 pressed=pressZeroed;
@@ -191,8 +193,8 @@ void main(void)
 
         case 6 :                        //RGB Blue Brightness
 
-            if(pressed==0){
-                RGBSpeed(0,3);
+            if(pressed==11){
+                RGBConfig(0,3);
                 n=0;
                 PrintMenu(1);
                 pressed=pressZeroed;
@@ -201,7 +203,7 @@ void main(void)
 
             else if((pressed>=1 && pressed <10)){
                 DC=Press_Convert(pressed);
-                RGBSpeed(DC,3);
+                RGBConfig(DC,3);
                 n=0;
                 PrintMenu(1);
                 pressed=pressZeroed;
@@ -218,13 +220,13 @@ void main(void)
         }
 
 
-        // if the buttons are pressed, toggle motor and LEDs not implemented yet
+        // if the buttons are pressed, toggle LEDs not implemented yet
 
 
         ADC14->CTL0 |=1;        //P5.5 from potentiometer, also not fully wired yet
         while(!ADC14->IFGR0);
         int x = ADC14->MEM[5];
-        printf("%d",x);
+        //      printf("%d",x);
         Systick_ms_delay(10);
 
 
