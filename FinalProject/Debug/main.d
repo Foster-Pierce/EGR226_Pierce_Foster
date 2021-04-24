@@ -2,6 +2,7 @@
 
 main.obj: ../main.c
 main.obj: C:/Users/Pierce/Documents/GitHub/EGR226_Pierce_Foster/FinalProject/FuncsLib.h
+main.obj: C:/Users/Pierce/Documents/GitHub/EGR226_Pierce_Foster/FinalProject/LCD.h
 main.obj: E:/ccs/ccs_base/arm/include/msp.h
 main.obj: E:/ccs/ccs_base/arm/include/msp432p401r.h
 main.obj: E:/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stdint.h
@@ -21,6 +22,7 @@ main.obj: E:/ccs/ccs_base/arm/include/system_msp432p401r.h
 
 ../main.c: 
 C:/Users/Pierce/Documents/GitHub/EGR226_Pierce_Foster/FinalProject/FuncsLib.h: 
+C:/Users/Pierce/Documents/GitHub/EGR226_Pierce_Foster/FinalProject/LCD.h: 
 E:/ccs/ccs_base/arm/include/msp.h: 
 E:/ccs/ccs_base/arm/include/msp432p401r.h: 
 E:/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stdint.h: 

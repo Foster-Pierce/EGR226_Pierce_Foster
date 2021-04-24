@@ -2,6 +2,7 @@
 
 FinalFuncs.obj: ../FinalFuncs.c
 FinalFuncs.obj: C:/Users/Pierce/Documents/GitHub/EGR226_Pierce_Foster/FinalProject/FuncsLib.h
+FinalFuncs.obj: C:/Users/Pierce/Documents/GitHub/EGR226_Pierce_Foster/FinalProject/LCD.h
 FinalFuncs.obj: E:/ccs/ccs_base/arm/include/msp.h
 FinalFuncs.obj: E:/ccs/ccs_base/arm/include/msp432p401r.h
 FinalFuncs.obj: E:/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stdint.h
@@ -21,6 +22,7 @@ FinalFuncs.obj: E:/ccs/ccs_base/arm/include/system_msp432p401r.h
 
 ../FinalFuncs.c: 
 C:/Users/Pierce/Documents/GitHub/EGR226_Pierce_Foster/FinalProject/FuncsLib.h: 
+C:/Users/Pierce/Documents/GitHub/EGR226_Pierce_Foster/FinalProject/LCD.h: 
 E:/ccs/ccs_base/arm/include/msp.h: 
 E:/ccs/ccs_base/arm/include/msp432p401r.h: 
 E:/ccs/tools/compiler/ti-cgt-arm_18.12.4.LTS/include/stdint.h: 
