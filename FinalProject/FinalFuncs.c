@@ -90,6 +90,9 @@ int Keypad_Read(void){
 void PrintMenu1(int c, int m){
     int i;
     write_command(6); //entry mode
+    //
+
+    //statements that determine what menu to print
     if (m==1){
         for(i=0;i<11;i++)
             write_data(menu1[c][i]);
@@ -143,17 +146,10 @@ double Press_Convert(int n){
     return 0;
 }
 
-void debouncer(void){ //switch debounce to timer32
-    // initialize Timer32_2 with interrupts for 10ms
+void PORT3_IRQHandler (void){
+    // port 3 service routine (buttons)
+    // initialize Timer32_2 with interrupts for .5s
     TIMER32_2->LOAD = 1500000;
     TIMER32_2->CONTROL = 0xE3;
-
-}
-
-
-
-
-void PORT3_IRQHandler (void){   // port 3 service routine (buttons)
-    debouncer();            //timer enabled with interrupts begin running for 10ms delay
     P3IFG=0;
 }

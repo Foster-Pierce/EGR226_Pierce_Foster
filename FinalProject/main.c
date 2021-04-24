@@ -1,6 +1,18 @@
+/****************************************************************************
+ * Author: Pierce Foster
+ * Course: EGR 226 - 905
+ * Date: 04/24/2021
+ * Project: Final Project
+ * Files: main.c , Initializer.c , FinalFuncs.c , FuncsLib.h
+ * Description: The program displays a menu on the LCD, that lets the user choose
+ * between three different menus: Door, Motor, RGBs. The door menu lets the user
+ * open or close the door. The motor menu lets the user set the motor speed from
+ * 0-9, and there's an emergency stop button for this motor. The RGB menu allows
+ * each LED; red, green and blue, to be turned on to a certain brightness, and
+ * there is a button that toggles these lights from on/off.
+ ****************************************************************************/
 #include <FuncsLib.h>
 #include "msp.h"
-#include <stdio.h>
 volatile int rgbr,rgbg,rgbb, set_r_off, set_g_off, set_b_off,R_on,G_on,B_on;
 void main(void)
 {
@@ -229,8 +241,6 @@ void main(void)
         volt = x*0.0002;        //gives value b/w 3.3 and 0 for the contrast and then for brightness (DC)
         LCD_DC = volt/3.3;
         LCDPWM(1-LCD_DC);
-
-        //   printf("test raw value:\t%f\n", x);
         Systick_ms_delay(10);
     }
 }
